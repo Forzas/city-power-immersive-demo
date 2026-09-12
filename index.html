@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>城市供电系统 · 沉浸式科普</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grid"></div>
+
+  <header class="hero section">
+    <nav class="topbar">
+      <div class="brand">⚡ 城市供电系统</div>
+      <div class="tag">科普宣传 / 沉浸叙事 / 可点击交互</div>
+    </nav>
+
+    <div class="hero-copy reveal">
+      <p class="eyebrow">从发电厂到千家万户</p>
+      <h1>一座城市的光，<br/>是如何被送到每一扇窗前的？</h1>
+      <p class="lede">向下滚动，跟随电能穿过发电、升压、输电、变电和配电网络。也可以直接点击城市中的关键节点，看见这套系统如何在高峰、故障与新能源接入下保持稳定。</p>
+      <div class="hero-actions">
+        <a href="#scene" class="button primary">进入城市</a>
+        <button class="button secondary" id="cycle-mode">切换场景</button>
+      </div>
+    </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat-card"><span>供电人口</span><strong>320 万</strong></div>
+      <div class="stat-card"><span>主变电站</span><strong>6 座</strong></div>
+      <div class="stat-card"><span>关键负荷</span><strong>医院 / 地铁 / 数据中心</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="scene" class="section scene-section">
+      <div class="section-copy reveal">
+        <p class="eyebrow">城市全景</p>
+        <h2>点击任意节点，追踪电力流向</h2>
+        <p>画面里会动态显示发电源、主干输电线路、变电站、储能站，以及居民区、商业区、工业区等典型用电场景。</p>
+      </div>
+
+      <div class="scene-wrap reveal">
+        <div class="mode-panel">
+          <button class="mode active" data-mode="normal">正常运行</button>
+          <button class="mode" data-mode="peak">晚高峰</button>
+          <button class="mode" data-mode="storm">暴雨故障</button>
+          <button class="mode" data-mode="green">新能源优先</button>
+        </div>
+
+        <div class="scene-shell">
+          <svg class="power-scene" viewBox="0 0 1400 880" role="img" aria-label="城市供电系统示意图">
+            <defs>
+              <linearGradient id="flowGradient" x1="0%" x2="100%">
+                <stop offset="0%" stop-color="#77f2ff"/>
+                <stop offset="50%" stop-color="#b995ff"/>
+                <stop offset="100%" stop-color="#8dffb9"/>
+              </linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+
+            <g class="backdrop">
+              <circle cx="1080" cy="140" r="110" class="halo"/>
+              <rect x="0" y="520" width="1400" height="360" class="ground"/>
+              <path d="M0 560 C200 510 360 620 540 560 C700 510 930 650 1120 580 C1260 530 1350 560 1400 540 L1400 880 L0 880 Z" class="terrain"/>
+              <path d="M0 590 C180 630 270 660 420 618 C540 580 650 600 760 640 C940 705 1170 642 1400 610" class="river"/>
+            </g>
+
+            <g class="flow-lines" filter="url(#glow)">
+              <path class="flow-line source-link" d="M150 540 L310 470 L460 430"/>
+              <path class="flow-line source-link" d="M260 280 L420 335 L460 430"/>
+              <path class="flow-line source-link" d="M220 700 L365 620 L460 430"/>
+              <path class="flow-line trunk-link" d="M460 430 L700 350 L940 310"/>
+              <path class="flow-line trunk-link" d="M700 350 L815 530 L1085 530"/>
+              <path class="flow-line branch-link" d="M940 310 L1160 250 L1275 340"/>
+              <path class="flow-line branch-link" d="M1085 530 L1245 585 L1290 705"/>
+              <path class="flow-line branch-link" d="M815 530 L760 690 L995 760"/>
+              <path class="flow-line storage-link" d="M700 350 L620 190 L835 145"/>
+            </g>
+
+            <g class="city-clusters">
+              <rect x="1145" y="295" width="180" height="120" rx="18" class="district district-commercial"/>
+              <rect x="1195" y="620" width="140" height="120" rx="18" class="district district-residential"/>
+              <rect x="860" y="680" width="180" height="105" rx="18" class="district district-industrial"/>
+            </g>
+
+            <g class="mini-buildings">
+              <rect x="1170" y="320" width="30" height="62" class="building"/>
+              <rect x="1210" y="302" width="28" height="80" class="building"/>
+              <rect x="1248" y="332" width="26" height="50" class="building"/>
+              <rect x="1283" y="310" width="22" height="72" class="building"/>
+
+              <rect x="1212" y="650" width="25" height="62" class="building"/>
+              <rect x="1248" y="636" width="22" height="76" class="building"/>
+              <rect x="1280" y="662" width="24" height="50" class="building"/>
+
+              <rect x="888" y="706" width="44" height="52" class="building"/>
+              <rect x="945" y="696" width="36" height="62" class="building"/>
+              <rect x="995" y="714" width="28" height="44" class="building"/>
+            </g>
+
+            <g class="node-layer">
+              <g class="node pulse" data-node="thermal" tabindex="0" transform="translate(90 500)">
+                <circle r="26" class="node-core source"/>
+                <text y="62">燃气电厂</text>
+              </g>
+              <g class="node pulse" data-node="wind" tabindex="0" transform="translate(240 250)">
+                <circle r="22" class="node-core renewable"/>
+                <text y="58">风电场</text>
+              </g>
+              <g class="node pulse" data-node="solar" tabindex="0" transform="translate(190 720)">
+                <circle r="22" class="node-core renewable"/>
+                <text y="58">光伏园区</text>
+              </g>
+              <g class="node pulse major" data-node="hub" tabindex="0" transform="translate(460 430)">
+                <circle r="30" class="node-core hub"/>
+                <text y="68">500kV 枢纽变电站</text>
+              </g>
+              <g class="node pulse" data-node="storage" tabindex="0" transform="translate(845 140)">
+                <circle r="22" class="node-core storage"/>
+                <text y="58">储能电站</text>
+              </g>
+              <g class="node pulse" data-node="subnorth" tabindex="0" transform="translate(940 310)">
+                <circle r="24" class="node-core substation"/>
+                <text y="62">北城变电站</text>
+              </g>
+              <g class="node pulse" data-node="subcentral" tabindex="0" transform="translate(1085 530)">
+                <circle r="24" class="node-core substation"/>
+                <text y="62">中央变电站</text>
+              </g>
+              <g class="node pulse" data-node="subsouth" tabindex="0" transform="translate(760 690)">
+                <circle r="24" class="node-core substation"/>
+                <text y="62">南城变电站</text>
+              </g>
+              <g class="node pulse" data-node="commercial" tabindex="0" transform="translate(1275 340)">
+                <circle r="22" class="node-core load critical"/>
+                <text y="58">商业核心区</text>
+              </g>
+              <g class="node pulse" data-node="residential" tabindex="0" transform="translate(1290 705)">
+                <circle r="22" class="node-core load"/>
+                <text y="58">居民生活区</text>
+              </g>
+              <g class="node pulse" data-node="industrial" tabindex="0" transform="translate(995 760)">
+                <circle r="22" class="node-core load industrial"/>
+                <text y="58">工业园区</text>
+              </g>
+            </g>
+          </svg>
+
+          <aside class="info-panel" id="info-panel">
+            <div class="panel-top">
+              <p class="eyebrow" id="panel-kicker">系统总览</p>
+              <h3 id="panel-title">城市供电是一个“接力系统”</h3>
+            </div>
+            <p id="panel-description">发电源先把一次能源转成电，再经过升压远距离输送，到了城区通过变电站降压，最后送进楼宇、工厂和交通设施。点击左侧节点可以查看它在整张网络中的作用。</p>
+            <ul class="panel-metrics" id="panel-metrics">
+              <li><span>当前负载</span><strong>68%</strong></li>
+              <li><span>供电影响</span><strong>全城主干网</strong></li>
+              <li><span>科普重点</span><strong>升压降损 / 分层调度</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section">
+      <div class="story-grid reveal">
+        <article class="story-card">
+          <p class="eyebrow">01 发电</p>
+          <h3>来源越多元，城市越稳</h3>
+          <p>燃气电厂响应快，风电和光伏更清洁，储能则像“电网充电宝”，在波动时帮助平衡供需。</p>
+        </article>
+        <article class="story-card">
+          <p class="eyebrow">02 输电</p>
+          <h3>为什么先升压再远送？</h3>
+          <p>电压升高后，同样功率下电流更小，线路发热损耗更低，所以大城市通常依靠高压或超高压通道输电。</p>
+        </article>
+        <article class="story-card">
+          <p class="eyebrow">03 配电</p>
+          <h3>最后几公里最贴近日常</h3>
+          <p>城市变电站把高压电逐级降到适合社区、商场、医院和工厂使用的等级，再经配电线路送到终端。</p>
+        </article>
+        <article class="story-card">
+          <p class="eyebrow">04 韧性</p>
+          <h3>故障不等于全城停摆</h3>
+          <p>环网、备用电源、储能和自动化切换，让局部故障尽量被隔离，不让黑暗蔓延到整座城市。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
