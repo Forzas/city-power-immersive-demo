@@ -125,6 +125,43 @@ body {
 .power-scene { width: 100%; height: auto; display: block; border-radius: 24px; background: linear-gradient(180deg, rgba(8,18,31,.86), rgba(8,20,34,.95)); }
 .info-panel { border-radius: 24px; padding: 22px; align-self: stretch; }
 #panel-title { margin: 10px 0 12px; font-size: 1.7rem; }
+.panel-insight-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+.panel-insight-card {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  overflow: hidden;
+}
+.panel-insight-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  opacity: .9;
+}
+.panel-insight-card.accent-cyan::before { background: var(--cyan); }
+.panel-insight-card.accent-violet::before { background: var(--violet); }
+.panel-insight-card.accent-green::before { background: var(--green); }
+.panel-label {
+  margin: 0 0 6px;
+  font-size: .76rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.panel-insight {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--text);
+}
 .panel-metrics { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
 .panel-metrics li {
   display: flex; justify-content: space-between; gap: 12px; padding: 14px 16px;
