@@ -16,41 +16,47 @@
 
   <header class="hero section">
     <nav class="topbar">
-      <div class="brand">⚡ 城市供电系统</div>
-      <div class="tag">科普宣传 / 沉浸叙事 / 可点击交互</div>
+      <div class="brand" data-i18n="brand">⚡ 城市供电系统</div>
+      <div class="topbar-right">
+        <div class="tag" data-i18n="topbarTag">科普宣传 / 沉浸叙事 / 可点击交互</div>
+        <div class="lang-switch" role="group" aria-label="Language switcher">
+          <button class="lang-button active" data-lang="zh" aria-pressed="true">中</button>
+          <button class="lang-button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </nav>
 
     <div class="hero-copy reveal">
-      <p class="eyebrow">从发电厂到千家万户</p>
-      <h1>一座城市的光，<br/>是如何被送到每一扇窗前的？</h1>
-      <p class="lede">向下滚动，跟随电能穿过发电、升压、输电、变电和配电网络。也可以直接点击城市中的关键节点，看见这套系统如何在高峰、故障与新能源接入下保持稳定。</p>
+      <p class="eyebrow" data-i18n="heroEyebrow">从发电厂到千家万户</p>
+      <h1 data-i18n-html="heroTitle">一座城市的光，<br/>是如何被送到每一扇窗前的？</h1>
+      <p class="lede" data-i18n="heroLede">向下滚动，跟随电能穿过发电、升压、输电、变电和配电网络。也可以直接点击城市中的关键节点，看见这套系统如何在高峰、故障与新能源接入下保持稳定。</p>
       <div class="hero-actions">
-        <a href="#scene" class="button primary">进入城市</a>
-        <button class="button secondary" id="cycle-mode">切换场景</button>
+        <a href="#scene" class="button primary" data-i18n="enterCity">进入城市</a>
+        <button class="button secondary" id="cycle-mode" data-i18n="switchScenario">切换场景</button>
       </div>
     </div>
 
     <div class="hero-stats reveal">
-      <div class="stat-card"><span>供电人口</span><strong>320 万</strong></div>
-      <div class="stat-card"><span>主变电站</span><strong>6 座</strong></div>
-      <div class="stat-card"><span>关键负荷</span><strong>医院 / 地铁 / 数据中心</strong></div>
+      <div class="stat-card"><span data-i18n="statPopulationLabel">供电人口</span><strong data-i18n="statPopulationValue">320 万</strong></div>
+      <div class="stat-card"><span data-i18n="statSubstationsLabel">主变电站</span><strong data-i18n="statSubstationsValue">6 座</strong></div>
+      <div class="stat-card"><span data-i18n="statLoadsLabel">关键负荷</span><strong data-i18n="statLoadsValue">医院 / 地铁 / 数据中心</strong></div>
     </div>
   </header>
 
   <main>
     <section id="scene" class="section scene-section">
       <div class="section-copy reveal">
-        <p class="eyebrow">城市全景</p>
-        <h2>点击任意节点，追踪电力流向</h2>
-        <p>画面里会动态显示发电源、主干输电线路、变电站、储能站，以及居民区、商业区、工业区等典型用电场景。</p>
+        <p class="eyebrow" data-i18n="sceneEyebrow">城市全景</p>
+        <h2 data-i18n="sceneTitle">点击任意节点，追踪电力流向</h2>
+        <p data-i18n="sceneDescription">画面里会动态显示发电源、主干输电线路、变电站、储能站，以及居民区、商业区、工业区等典型用电场景。</p>
       </div>
 
       <div class="scene-wrap reveal">
         <div class="mode-panel">
-          <button class="mode active" data-mode="normal">正常运行</button>
-          <button class="mode" data-mode="peak">晚高峰</button>
-          <button class="mode" data-mode="storm">暴雨故障</button>
-          <button class="mode" data-mode="green">新能源优先</button>
+          <button class="mode active" data-mode="normal" data-i18n="modeNormal">正常运行</button>
+          <button class="mode" data-mode="peak" data-i18n="modePeak">晚高峰</button>
+          <button class="mode" data-mode="storm" data-i18n="modeStorm">暴雨故障</button>
+          <button class="mode" data-mode="green" data-i18n="modeGreen">新能源优先</button>
         </div>
 
         <div class="scene-shell">
@@ -107,47 +113,47 @@
             <g class="node-layer">
               <g class="node pulse" data-node="thermal" tabindex="0" transform="translate(90 500)">
                 <circle r="26" class="node-core source"/>
-                <text y="62">燃气电厂</text>
+                <text y="62" data-node-label="thermal">燃气电厂</text>
               </g>
               <g class="node pulse" data-node="wind" tabindex="0" transform="translate(240 250)">
                 <circle r="22" class="node-core renewable"/>
-                <text y="58">风电场</text>
+                <text y="58" data-node-label="wind">风电场</text>
               </g>
               <g class="node pulse" data-node="solar" tabindex="0" transform="translate(190 720)">
                 <circle r="22" class="node-core renewable"/>
-                <text y="58">光伏园区</text>
+                <text y="58" data-node-label="solar">光伏园区</text>
               </g>
               <g class="node pulse major" data-node="hub" tabindex="0" transform="translate(460 430)">
                 <circle r="30" class="node-core hub"/>
-                <text y="68">500kV 枢纽变电站</text>
+                <text y="68" data-node-label="hub">500kV 枢纽变电站</text>
               </g>
               <g class="node pulse" data-node="storage" tabindex="0" transform="translate(845 140)">
                 <circle r="22" class="node-core storage"/>
-                <text y="58">储能电站</text>
+                <text y="58" data-node-label="storage">储能电站</text>
               </g>
               <g class="node pulse" data-node="subnorth" tabindex="0" transform="translate(940 310)">
                 <circle r="24" class="node-core substation"/>
-                <text y="62">北城变电站</text>
+                <text y="62" data-node-label="subnorth">北城变电站</text>
               </g>
               <g class="node pulse" data-node="subcentral" tabindex="0" transform="translate(1085 530)">
                 <circle r="24" class="node-core substation"/>
-                <text y="62">中央变电站</text>
+                <text y="62" data-node-label="subcentral">中央变电站</text>
               </g>
               <g class="node pulse" data-node="subsouth" tabindex="0" transform="translate(760 690)">
                 <circle r="24" class="node-core substation"/>
-                <text y="62">南城变电站</text>
+                <text y="62" data-node-label="subsouth">南城变电站</text>
               </g>
               <g class="node pulse" data-node="commercial" tabindex="0" transform="translate(1275 340)">
                 <circle r="22" class="node-core load critical"/>
-                <text y="58">商业核心区</text>
+                <text y="58" data-node-label="commercial">商业核心区</text>
               </g>
               <g class="node pulse" data-node="residential" tabindex="0" transform="translate(1290 705)">
                 <circle r="22" class="node-core load"/>
-                <text y="58">居民生活区</text>
+                <text y="58" data-node-label="residential">居民生活区</text>
               </g>
               <g class="node pulse" data-node="industrial" tabindex="0" transform="translate(995 760)">
                 <circle r="22" class="node-core load industrial"/>
-                <text y="58">工业园区</text>
+                <text y="58" data-node-label="industrial">工业园区</text>
               </g>
             </g>
           </svg>
@@ -171,24 +177,65 @@
     <section class="section story-section">
       <div class="story-grid reveal">
         <article class="story-card">
-          <p class="eyebrow">01 发电</p>
-          <h3>来源越多元，城市越稳</h3>
-          <p>燃气电厂响应快，风电和光伏更清洁，储能则像“电网充电宝”，在波动时帮助平衡供需。</p>
+          <p class="eyebrow" data-i18n="story1Eyebrow">01 发电</p>
+          <h3 data-i18n="story1Title">来源越多元，城市越稳</h3>
+          <p data-i18n="story1Description">燃气电厂响应快，风电和光伏更清洁，储能则像“电网充电宝”，在波动时帮助平衡供需。</p>
         </article>
         <article class="story-card">
-          <p class="eyebrow">02 输电</p>
-          <h3>为什么先升压再远送？</h3>
-          <p>电压升高后，同样功率下电流更小，线路发热损耗更低，所以大城市通常依靠高压或超高压通道输电。</p>
+          <p class="eyebrow" data-i18n="story2Eyebrow">02 输电</p>
+          <h3 data-i18n="story2Title">为什么先升压再远送？</h3>
+          <p data-i18n="story2Description">电压升高后，同样功率下电流更小，线路发热损耗更低，所以大城市通常依靠高压或超高压通道输电。</p>
         </article>
         <article class="story-card">
-          <p class="eyebrow">03 配电</p>
-          <h3>最后几公里最贴近日常</h3>
-          <p>城市变电站把高压电逐级降到适合社区、商场、医院和工厂使用的等级，再经配电线路送到终端。</p>
+          <p class="eyebrow" data-i18n="story3Eyebrow">03 配电</p>
+          <h3 data-i18n="story3Title">最后几公里最贴近日常</h3>
+          <p data-i18n="story3Description">城市变电站把高压电逐级降到适合社区、商场、医院和工厂使用的等级，再经配电线路送到终端。</p>
         </article>
         <article class="story-card">
-          <p class="eyebrow">04 韧性</p>
-          <h3>故障不等于全城停摆</h3>
-          <p>环网、备用电源、储能和自动化切换，让局部故障尽量被隔离，不让黑暗蔓延到整座城市。</p>
+          <p class="eyebrow" data-i18n="story4Eyebrow">04 韧性</p>
+          <h3 data-i18n="story4Title">故障不等于全城停摆</h3>
+          <p data-i18n="story4Description">环网、备用电源、储能和自动化切换，让局部故障尽量被隔离，不让黑暗蔓延到整座城市。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section knowledge-section">
+      <div class="section-copy reveal knowledge-copy">
+        <p class="eyebrow" data-i18n="knowledgeEyebrow">继续展开</p>
+        <h2 data-i18n="knowledgeTitle">这些问题，才是最容易让人“看懂电网”的入口</h2>
+        <p data-i18n="knowledgeIntro">除了认识节点，还可以继续追问：为什么不能把电大量存起来？为什么傍晚更紧张？为什么故障不一定会变成全城停电？下面这组知识点更适合对外传播，也更容易让第一次接触的人产生“原来如此”的感觉。</p>
+      </div>
+
+      <div class="knowledge-grid reveal">
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge1Eyebrow">01 实时平衡</p>
+          <h3 data-i18n="knowledge1Title">为什么电网很难像水库一样“把电存起来”？</h3>
+          <p data-i18n="knowledge1Description">大多数时候，电网依然需要边发边用。储能正在变多，但容量和成本还不足以让整座城市长期“囤电”，所以调度系统必须持续平衡供需。</p>
+        </article>
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge2Eyebrow">02 晚高峰</p>
+          <h3 data-i18n="knowledge2Title">为什么傍晚常常比中午更吃紧？</h3>
+          <p data-i18n="knowledge2Description">下班后，照明、空调、电梯、做饭等负荷叠加上来，而光伏出力却在下降，于是傍晚成了最典型的供需紧平衡时段。</p>
+        </article>
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge3Eyebrow">03 故障隔离</p>
+          <h3 data-i18n="knowledge3Title">为什么一条线路出问题，不一定全城一起黑？</h3>
+          <p data-i18n="knowledge3Description">现代电网会通过环网结构、保护装置、备用通道和自动切换，把故障尽量局限在局部区域，不让影响层层蔓延。</p>
+        </article>
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge4Eyebrow">04 新能源波动</p>
+          <h3 data-i18n="knowledge4Title">为什么新能源越多，调度反而越考验系统能力？</h3>
+          <p data-i18n="knowledge4Description">风和太阳更清洁，但也更受天气影响。新能源占比提高后，储能、灵活机组和更聪明的调度算法就变得更关键。</p>
+        </article>
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge5Eyebrow">05 关键负荷</p>
+          <h3 data-i18n="knowledge5Title">为什么医院、地铁、数据中心要被优先保障？</h3>
+          <p data-i18n="knowledge5Description">这些设施不仅耗电，而且一旦中断会直接影响生命安全、交通秩序或大范围数字服务，所以可靠性要求远高于普通负荷。</p>
+        </article>
+        <article class="knowledge-card">
+          <p class="eyebrow" data-i18n="knowledge6Eyebrow">06 需求响应</p>
+          <h3 data-i18n="knowledge6Title">电不够时，除了“多发电”，还能怎么做？</h3>
+          <p data-i18n="knowledge6Description">答案之一叫需求响应：让部分工业园区、商业楼宇或充电设施在关键时刻短暂错峰，用更柔性的方式帮助电网稳住平衡。</p>
         </article>
       </div>
     </section>
