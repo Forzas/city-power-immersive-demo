@@ -1,37 +1,37 @@
-# 城市科普项目｜PRD 整体概述
+# Urban Systems Education Project | PRD Overview
 
-## 1. 项目定位与目标
-**一句话概述**
-看见城市如何运转——通过互动体验理解每天习以为常、却很少真正看见的城市系统。
+## 1. Project Positioning and Goals
+**One-line overview**
+See how a city works through interactive experiences that reveal the everyday urban systems we rarely notice.
 
-**目标**
-- 系列化：每一次输出，可扩展成完整内容系列。
-- 沉浸感：直观且具亲和力的交互，助力理解深度内容。
-- 效率感：用户可在 30 秒理解概况，3 分钟获取系统级认知。 
-
----
-
-## 2. 当前阶段成果
-**已完成文档：**
-1. 01_展示页框架.md
-2. 02_首页文案_v1.md
-3. 03_demo清单_v1.md
-4. 04_城市供水系统_demo草案.md
-5. 05_垃圾分类后的旅程_demo草案.md
-6. 06_快递的一生_demo草案.md
-
-**拟定优先实现：**
- 第一阶段内，初版计划六大 demo 上线：
-- 城市供电
-- 供水 / 排污
-- 垃圾旅程
-- 快递全程
-- 地铁系统
-- 大楼运力协同
+**Goals**
+- Extensibility: Every release can grow into a complete content series.
+- Immersion: Intuitive, approachable interactions make complex topics easier to understand.
+- Efficiency: Users grasp the overview in 30 seconds and gain system-level insight in three minutes.
 
 ---
 
-## 3. 用户旅程与交互亮点
-**体验亮点概括：**
-- 主体验：基于模块化链路重构视点。 
-- 每步理念垂直深入：链路抓点 -> 数据涉及背后影像化。
+## 2. Current Deliverables
+**Completed documents:**
+1. [Showcase Page Framework](doc/01_showcase_page_framework.md)
+2. [Homepage Copy v1](doc/02_homepage_copy_v1.md)
+3. [Demo Catalog v1](doc/03_demo_catalog_v1.md)
+4. [Urban Water Supply Demo Draft](doc/04_urban_water_supply_demo_draft.md)
+5. [Post-Sorting Waste Journey Demo Draft](doc/05_post_sorting_waste_journey_demo_draft.md)
+6. [The Life of a Package Demo Draft](doc/06_life_of_a_package_demo_draft.md)
+
+**Proposed implementation priorities:**
+The first release is planned to include six demos:
+- Urban power grid
+- Water supply and wastewater
+- Waste journey
+- End-to-end package delivery
+- Metro system
+- Building systems coordination
+
+---
+
+## 3. User Journey and Interaction Highlights
+**Experience highlights:**
+- Core experience: Explore each system through a modular, end-to-end journey.
+- Progressive depth: Select key nodes in the journey to reveal the data and mechanisms behind them.
