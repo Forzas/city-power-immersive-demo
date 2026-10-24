@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>城市供电系统</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市电力系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>城市供电系统页面</h1>
-  <p>本页面展示了城市电网从发电到变电再到最终用户的完整流程。</p>
+    <header>
+        <h1>一座城市的光是如何被送到每一扇窗前的？</h1>
+        <p>从发电厂到千家万户，跟随电流穿越完整过程。</p>
+        <button onclick="switchScene('normal')">正常运行</button>
+        <button onclick="switchScene('peak')">晚高峰</button>
+        <button onclick="switchScene('storm')">暴雨故障</button>
+        <button onclick="switchScene('renewable_priority')">新能源优先</button>
+    </header>
+    <main>
+        <section id="grid-visual">
+            <svg width="800" height="600" id="energy-flow">
+                <!-- Example energy flow animation -->
+                <circle cx="100" cy="100" r="30" fill="blue" id="node-plant" class="energy-node"></circle>
+                <line x1="100" y1="100" x2="400" y2="300" stroke="blue" stroke-width="5" class="energy-flow-line" stroke-dasharray="5,5"></line>
+<line x1="400" y1="300" x2="600" y2="400" stroke="orange" stroke-width="5" class="renewable-energy-flow"></line>
+                <circle cx="400" cy="300" r="20" fill="green" class="energy-consumer"></circle>
+            </svg>
+        </section>
+        <section id="audio-enhance">
+            <p>点击下方按钮以体验沉浸式声音效果：</p>
+            <button onclick="playAudio('power-flow')">播放电力流动音效</button>
+        </section>
+    </main>
 </body>
 </html>
