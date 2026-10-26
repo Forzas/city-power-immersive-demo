@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Journey Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Waste Journey: Your Trash, Their Journey</h1>
+    <p>Choose a type of waste to see where it goes:</p>
+    <div id="waste-options">
+        <button onclick="showJourney('food')">Food Waste</button>
+        <button onclick="showJourney('recyclable')">Recyclable</button>
+        <button onclick="showJourney('hazardous')">Hazardous</button>
+        <button onclick="showJourney('residual')">Residual</button>
+    </div>
+
+    <div id="journey-display">
+        <p>Select a waste type to view its journey here.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
