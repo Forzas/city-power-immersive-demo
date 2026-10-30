@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101e30" />
+  <meta name="description" content="一条消息怎样从你的手机到达对方？选择 Wi-Fi 或移动网络，探索弱信号、拥塞和离线等待背后的城市通信系统。" />
+  <title>一条消息的旅程 · 发送，不等于收到</title>
+  <link rel="stylesheet" href="./message.css" />
+  <script src="./message.js" defer></script>
+  <link rel="stylesheet" href="./city-context.css" />
+  <script src="./city-day-data.js" defer></script>
+  <script src="./city-context.js" defer></script>
+</head>
+<body data-scenario="normal" data-network="wifi" data-paused="false">
+  <a class="skip-link" href="#explorer">跳到消息旅程</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./index.html"><span aria-hidden="true">◈</span> CITY / UNDERSTOOD<small>看不见的城市 / 通信网络</small></a>
+    <a class="home-link" href="./index.html">← 返回首页</a>
+  </header>
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">日常的一瞬，城市的接力</p>
+        <h1 id="hero-title">「发出去了」，<br />为什么<em>还没收到？</em></h1>
+        <p class="lede">从你手中的手机，到另一个人的屏幕。一次轻触，经过无线接入、城市网络与应用服务；每一个「已」，其实都在说不同的事。</p>
+        <a class="primary-link" href="#explorer">跟随这条消息 <span aria-hidden="true">↘</span></a>
+        <p class="hero-note">两种接入方式 · 四种场景 · 一条本地模拟消息</p>
+      </div>
+      <div class="conversation" aria-label="虚构消息示意">
+        <div class="conversation-top"><span class="online-dot" aria-hidden="true"></span> 城市通信实验室 <span>本地演示</span></div>
+        <div class="bubble incoming">一条消息，真的直接飞到<br />另一台手机里吗？</div>
+        <div class="bubble outgoing">不，它需要一整张网络接力。<span aria-hidden="true">↗</span></div>
+        <div class="receipt-key"><span>01 发送</span><i aria-hidden="true"></i><span>02 服务</span><i aria-hidden="true"></i><span>03 设备</span></div>
+        <p>这里没有真实联系人，也没有外部通信请求。</p>
+      </div>
+    </section>
+
+    <section class="lab wrap" id="explorer" aria-labelledby="journey-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 让看不见的路径，变得可见</p><h2 id="journey-title">你来决定，消息怎么走。</h2></div><span class="tag">教学模拟 · 非真实测速</span></div>
+      <p class="url-notice" id="url-notice" role="status" hidden></p>
+      <div class="settings">
+        <fieldset><legend>发送端接入方式</legend><div class="button-group">
+          <button type="button" data-network="wifi" aria-pressed="true">Wi-Fi <small>无线接入点</small></button>
+          <button type="button" data-network="mobile" aria-pressed="false">移动网络 <small>蜂窝基站</small></button>
+        </div></fieldset>
+        <fieldset><legend>选择一个场景 <span>切换会重新准备消息</span></legend><div class="button-group scenarios">
+          <button type="button" data-scenario="normal" aria-pressed="true">正常传递</button>
+          <button type="button" data-scenario="weak" aria-pressed="false">发送端弱信号</button>
+          <button type="button" data-scenario="congested" aria-pressed="false">网络拥塞</button>
+          <button type="button" data-scenario="offline" aria-pressed="false">接收方离线</button>
+        </div></fieldset>
+      </div>
+      <div class="scenario-summary"><span class="signal-symbol" aria-hidden="true">◉</span><div><h3 id="scenario-title">正常传递</h3><p id="scenario-copy"></p></div><span class="bottleneck" id="bottleneck"></span></div>
+
+      <div class="route-header"><h3>一条消息的路线</h3><p>点击节点，看看它在忙什么 ↓</p></div>
+      <ol class="route" id="route" aria-label="消息路径">
+        <li><button type="button" data-node="sender" aria-controls="node-detail" aria-pressed="true"><span class="node-icon" aria-hidden="true">▯</span><span class="node-number">01</span><strong>发送手机</strong><small>消息从这里出发</small><span class="node-state">当前</span></button></li>
+        <li><button type="button" data-node="wifi" aria-controls="node-detail" aria-pressed="false"><span class="node-icon" id="access-icon" aria-hidden="true">⌁</span><span class="node-number">02</span><strong id="access-name">Wi-Fi 接入点</strong><small id="access-short">无线到有线的入口</small><span class="node-state">未到达</span></button></li>
+        <li><button type="button" data-node="backhaul" aria-controls="node-detail" aria-pressed="false"><span class="node-icon" aria-hidden="true">⇄</span><span class="node-number">03</span><strong>接入与回传</strong><small id="backhaul-short">宽带接入与路由</small><span class="node-state">未到达</span></button></li>
+        <li><button type="button" data-node="service" aria-controls="node-detail" aria-pressed="false"><span class="node-icon" aria-hidden="true">▤</span><span class="node-number">04</span><strong>应用服务</strong><small>接收、暂存与转发</small><span class="node-state">未到达</span></button></li>
+        <li><button type="button" data-node="recipient-network" aria-controls="node-detail" aria-pressed="false"><span class="node-icon" aria-hidden="true">◎</span><span class="node-number">05</span><strong>对方的网络</strong><small>另一段接入链路</small><span class="node-state">未到达</span></button></li>
+        <li><button type="button" data-node="device" aria-controls="node-detail" aria-pressed="false"><span class="node-icon" aria-hidden="true">▯</span><span class="node-number">06</span><strong>接收手机</strong><small>送达后，才能谈已读</small><span class="node-state">未到达</span></button></li>
+      </ol>
+      <p class="route-caption" id="route-caption"></p>
+
+      <div class="lab-grid">
+        <article class="detail panel" id="node-detail" aria-labelledby="node-title">
+          <p class="eyebrow" id="node-index">节点 01 / 06</p><h3 id="node-title">发送手机</h3>
+          <h4 id="node-question"></h4><p id="node-copy"></p>
+          <div class="life"><span>与你的日常有关</span><p id="node-life"></p></div>
+          <p class="node-context" id="node-context"></p>
+        </article>
+        <section class="message-panel panel" aria-labelledby="message-title">
+          <div class="panel-heading"><h3 id="message-title">这一条消息</h3><span class="tag">固定虚构内容</span></div>
+          <p class="demo-message">到家后，一起看城市的灯吧。<span aria-hidden="true">↗</span></p>
+          <p class="status-text" id="status-text" role="status" aria-live="polite" aria-atomic="true"></p>
+          <ol class="receipts" aria-label="消息确认状态">
+            <li id="receipt-pending"><span aria-hidden="true">○</span>待传递<small>尚未获服务确认</small></li>
+            <li id="receipt-accepted"><span aria-hidden="true">○</span>服务已接收<small>不是设备送达</small></li>
+            <li id="receipt-delivered"><span aria-hidden="true">○</span>设备已送达<small>不是已读</small></li>
+            <li id="receipt-read"><span aria-hidden="true">○</span>已读<small>需要手动模拟打开</small></li>
+          </ol>
+          <div class="progress-label"><label for="message-progress">路径进度</label><span id="progress-value">0%</span></div>
+          <progress id="message-progress" max="100" value="0">0%</progress>
+          <div class="controls">
+            <button type="button" id="start" class="primary-button">开始自动演示</button>
+            <button type="button" id="step">手动前进一步</button>
+            <button type="button" id="pause" aria-pressed="false">暂停演示与动画</button>
+            <button type="button" id="reconnect" disabled>让接收方重新联网</button>
+            <button type="button" id="read-message" disabled>模拟对方打开消息</button>
+            <button type="button" id="reset">重置全部</button>
+          </div>
+          <p class="control-note" id="control-note"></p>
+          <p class="motion-note" id="motion-note"></p>
+        </section>
+      </div>
+      <section class="latency" aria-labelledby="latency-title">
+        <div><p class="eyebrow">02 / 等待，发生在哪里？</p><h3 id="latency-title">把延迟拆开看</h3><p>以下是固定模型的示意预算，单位为 ms（毫秒），不是你的网速、实测延迟或送达承诺。</p></div>
+        <dl class="latency-values" id="latency-values"></dl>
+        <p id="latency-note"></p>
+      </section>
+    </section>
+
+    <section class="insight wrap" aria-labelledby="insight-title">
+      <p class="eyebrow">03 / 带走一个理解</p><h2 id="insight-title">信号满格，也不等于对方已经读到。</h2>
+      <div class="insight-grid">
+        <article><span>01</span><h3>无线，只是第一段。</h3><p>Wi-Fi 接入点和基站都是入口。接入之后，还有回传、路由与应用服务；消息不是两部手机之间的一次直飞。</p></article>
+        <article><span>02</span><h3>每个确认，都有边界。</h3><p>服务接收、设备送达、用户阅读是三个不同事件。网络正常，也不能保证有人此刻正看着屏幕。</p></article>
+        <article><span>03</span><h3>离线，不等于丢失。</h3><p>本演示假设应用服务暂存消息，等待对方恢复连接后再转发。真实服务的保留时限、重试方式与回执支持各不相同。</p></article>
+      </div>
+      <aside class="assumptions"><h3>这次演示的约定</h3><p>只模拟一条固定消息，不访问真实联系人、不接入外部 API。假设服务支持排队暂存、设备送达确认和可选已读回执；暂不模拟加密握手、丢包、保留期限或多设备同步。弱信号只影响发送端无线段；拥塞只增加回传与服务排队。离线接收方在手动重新联网前，绝不会显示送达或已读。</p><p>每次推进固定代表 100 ms 的示意网络时间；自动演示每 650 ms 推进一次，刻意放慢便于观察。离线等待与人的阅读时间没有固定时长，不计入路径预算。重置会回到「正常传递 / Wi-Fi / 未发送」，清除所有回执。</p></aside>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>城市的运行，藏在日常之中。</span><a href="./index.html">← 返回首页，继续探索</a></footer>
+  <noscript><p class="noscript wrap">启用 JavaScript 后可操作本地模拟。消息需经过发送手机、无线接入、回传、应用服务与接收方网络；服务接收不等于设备送达，更不等于已读。</p></noscript>
+</body>
+</html>

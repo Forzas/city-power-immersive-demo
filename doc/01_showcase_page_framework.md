@@ -103,16 +103,21 @@ The current working implementation includes:
 
 These are educational MVPs, not production operational systems. Implementation status does not imply deployment. Language coverage is not yet uniform: power and water offer Chinese/English switching; the other four demos are Chinese-first.
 
-### Phase B: Add Three Complementary Topics — Planned, Build Next
-Build and validate in this order:
+### Phase B: Add Three Complementary Topics — Implemented MVPs
+The complementary expansion covers:
 1. **Traffic lights and traffic flow (红绿灯与交通流):** Immediate experimental feedback and visible trade-offs.
 2. **The journey of a phone message (手机消息的旅行):** Add digital infrastructure rather than another physical transport journey.
 3. **Urban drainage and flood resilience (城市排水与防涝):** Extend the infrastructure collection while distinguishing stormwater from potable water and wastewater.
 
-Each topic must work independently and be linked from the homepage before the cross-topic experience is built.
+Each topic now works independently and is linked from the homepage:
+- [Traffic-flow experiment](../traffic_flow.html): Two connected intersections, timing trade-offs, safe exclusive phases, and deterministic baseline comparisons.
+- [Phone-message journey](../message_journey.html): Wi-Fi/mobile routes, separate acceptance/delivery/read states, and explicit offline/reconnection behavior.
+- [Drainage experiment](../urban_drainage.html): Bounded infiltration, storage and outfall capacities with a tested water balance.
 
-### Phase C: Add One Cross-Topic Experience — Planned, After Phase B
-Build **A Day in the Same City (同一座城的一天)** as a connected entry point to existing demos, not a tenth standalone subject. Start only after all three Phase B topics meet their MVP acceptance criteria.
+### Phase C: Add One Cross-Topic Experience — Implemented MVP
+[A Day in the Same City (同一座城的一天)](../city_day.html) connects the nine standalone topics through curated morning-commute, heavy-rain and holiday scenarios. It is an additional entry point, not a tenth standalone subject.
+
+The three complementary topics have passed their model tests and browser checks. The integrated experience preserves scenario/intervention/system context, labels general-explainer mappings, and has browser coverage for all 27 shared-scenario/system deep links and returns. These implementation checks do not imply a deployed release or a validated real-world city simulator.
 
 ### Phase D: Expand the Backlog
 Choose later topics based on learning value, visual potential, audience feedback, and opportunities to connect existing journeys. The backlog in Section 9 is not a commitment to implement all topics in the next release.
@@ -232,11 +237,17 @@ The initial version is a **curated scenario explorer**, not a coupled city-scale
 - Perform real-browser checks of interaction, keyboard controls, motion preferences, and layouts at 320, 390, 768, 1024, and 1440 pixels.
 - Regress existing homepage filters and demos when shared navigation or state handling changes.
 
-**Next delivery milestones**
+**Delivered expansion milestones**
 1. Traffic-flow MVP, homepage entry, and acceptance tests.
 2. Phone-message MVP, homepage entry, and acceptance tests.
 3. Drainage MVP, homepage entry, water-balance tests, and browser acceptance.
 4. Cross-topic scenario/state mapping, shared-city MVP, deep links, and end-to-end regression.
+
+**Validation baseline**
+- Run `node --test tests\*.test.cjs` from the repository root for the complete model/controller and link suite.
+- Run `node tests\water-browser.cjs` for water regression and `node tests\expansion-browser.cjs` for metro/building, new-topic numerical rendering, message state ordering, and shared-city integration.
+- Browser runners require Node.js 22+ and Microsoft Edge, or a Chromium executable configured through `WATER_BROWSER`; no package installation is required.
+- Next prioritization should focus on audience feedback, language consistency, educational content review, and release/deployment verification before expanding the backlog.
 
 ## 9. Later Demo Backlog
 | Topic | Opening question | Potential interactions |

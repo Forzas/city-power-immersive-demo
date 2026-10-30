@@ -119,6 +119,18 @@ h3 { font-weight: 550; letter-spacing: -.3px; }
 .building-art { color: #b9a6cb; background: radial-gradient(ellipse at 50% 80%, #3b3345, #26222b 70%); }
 .building-art .art-solid { fill: #342d3b; }
 .building-route { stroke: #d6b3ef; stroke-width: 2.5; }
+.traffic-art { color: #d7bc81; background: radial-gradient(ellipse at 50% 80%, #49412a, #2b281c 70%); }
+.traffic-art .art-solid { fill: #302d22; }
+.message-art { color: #a7b9ec; background: radial-gradient(ellipse at 50% 80%, #303b61, #202535 70%); }
+.message-art .art-solid { fill: #28334e; }
+.drainage-art { color: #8ebeb8; background: radial-gradient(ellipse at 50% 80%, #29473f, #1d2c28 70%); }
+.drainage-art .art-solid { fill: #233d35; }
+.city-day-entry { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 40px; padding: 30px; border: 1px solid #536e47; border-radius: 8px; background: linear-gradient(110deg, #253820, #17241c); }
+.city-day-entry .eyebrow { margin-bottom: 12px; }
+.city-day-entry h2 { font-size: 30px; }
+.city-day-entry p:not(.eyebrow) { color: var(--muted); font-size: 12px; line-height: 1.8; max-width: 590px; margin-bottom: 0; }
+.city-day-entry .button { flex-shrink: 0; }
+@media(max-width: 700px) { .city-day-entry { display: block; padding: 24px; }.city-day-entry .button { margin-top: 24px; } }
 .demo-content { padding: 22px; display: flex; flex-direction: column; flex: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { font-size: 8px; color: #b5c5af; background: #a4c18a0b; border: 1px solid #3b4637; border-radius: 3px; padding: 4px 6px; }

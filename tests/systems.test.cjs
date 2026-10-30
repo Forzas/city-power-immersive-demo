@@ -118,9 +118,9 @@ test('building cutaway follows selected system and floor', () => {
   assert.equal(floors.find(floor => floor.classList.values.has('selected')).dataset.floor, 'office');
 });
 
-test('local pages and assets exist; all six catalog topics are live', () => {
+test('local pages and assets exist; all nine catalog topics are live', () => {
   const index = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.equal((index.match(/badge live/g) || []).length, 6);
+  assert.equal((index.match(/badge live/g) || []).length, 9);
   assert.doesNotMatch(index, /Coming soon|CONTENT PREVIEW|IN DEVELOPMENT|>PLANNED</);
   for (const file of ['index.html', 'metro_operations.html', 'building_systems.html']) {
     const html = fs.readFileSync(path.join(root, file), 'utf8');

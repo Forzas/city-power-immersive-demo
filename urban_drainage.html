@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2028">
+  <meta name="description" content="用守恒的雨水模型，探索降雨、入渗、管网、调蓄与排口之间的关系。">
+  <title>城市排水与防涝 · 雨落之后</title>
+  <link rel="stylesheet" href="./drainage.css">
+  <script src="./drainage.js" defer></script>
+  <link rel="stylesheet" href="./city-context.css" />
+  <script src="./city-day-data.js" defer></script>
+  <script src="./city-context.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#explorer">跳到雨水实验室</a>
+  <header class="wrap topbar"><a class="brand" href="./index.html">◈ CITY / UNDERSTOOD</a><a href="./index.html">← 返回首页</a></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div><p class="eyebrow">城市基础设施 × 能源与环境 / 城市排水</p><h1 id="title">一场雨，<br>城市怎么<span>接住？</span></h1><p class="intro">雨水不会在下水口消失。沿着地表、管网和调蓄池，看看每一立方米的去向。</p><a class="start" href="#explorer">进入雨水实验室 ↓</a></div>
+      <div class="hero-note"><span class="rain-symbol" aria-hidden="true">☂</span><strong>不是“排得越快”就够了。</strong><p>让一部分雨水入渗，让一部分暂存，也要看下游是否接得住。</p><small>本地确定性教学模型 · 中文版 · 无实时数据</small></div>
+    </section>
+
+    <section id="explorer" aria-labelledby="lab-title">
+      <div class="section-head"><div><p class="eyebrow">01 / 同一场雨，两种城市表面</p><h2 id="lab-title">给雨水留一点空间。</h2></div><button id="reset" type="button">重置实验</button></div>
+      <div class="controls">
+        <fieldset><legend>选择工况</legend><div class="scenario-buttons"><button type="button" data-scenario="normal" aria-pressed="true">普通降雨</button><button type="button" data-scenario="rain" aria-pressed="false">强降雨</button><button type="button" data-scenario="restricted" aria-pressed="false">排口受限</button></div></fieldset>
+        <div><label for="rainfall">降雨强度 <output id="rainfall-value" for="rainfall">10 mm/h</output></label><input id="rainfall" type="range" min="5" max="140" step="5" value="10"><small>恒定降雨 30 分钟，随后观察退水 30 分钟。</small></div>
+        <div><label for="surface">城市表面与措施</label><select id="surface"><option value="sponge">海绵措施 · 增加入渗 + 调蓄</option><option value="paved">硬化地表 · 无调蓄</option></select><small>右侧始终与同一场雨的硬化基线比较。</small></div>
+      </div>
+      <p id="url-message" class="url-message" role="status" hidden></p>
+      <div class="playback"><label for="minute">观察时刻 <output id="minute-value" for="minute">30 分钟</output></label><input id="minute" type="range" min="0" max="60" step="1" value="30"><button id="pause" type="button" aria-pressed="false">暂停流动动画</button><small id="motion-note">动画仅示意流向；拖动时间查看模型，不会自动推进。</small></div>
+
+      <div class="experiment">
+        <div class="diagram-card">
+          <div class="diagram-heading"><h3>雨水的去向</h3><span>连接示意 / 非地理比例</span></div>
+          <div id="network" class="network">
+            <div class="rain-band" aria-hidden="true">↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓</div>
+            <button type="button" class="node surface-node" data-node="surface" aria-pressed="true"><span>01 / 地表径流</span><strong id="surface-volume">0.0 m³</strong><span class="reservoir"><i id="surface-fill"></i></span></button>
+            <button type="button" class="node infiltration-node" data-node="infiltration" aria-pressed="false"><span>02 / 入渗</span><strong id="infiltration-volume">0.0 m³</strong><small>土壤也会饱和</small></button>
+            <div class="connector inlet-flow" id="inlet-flow" aria-hidden="true">↓ 雨水口</div>
+            <button type="button" class="node pipe-node" data-node="pipe" aria-pressed="false"><span>03 / 雨水管网</span><strong id="pipe-volume">0.0 m³</strong><span class="reservoir"><i id="pipe-fill"></i></span></button>
+            <div class="connector storage-flow" id="storage-flow" aria-hidden="true">→ 分流</div>
+            <button type="button" class="node storage-node" data-node="storage" aria-pressed="false"><span>04 / 调蓄池</span><strong id="storage-volume">0.0 m³</strong><span class="reservoir"><i id="storage-fill"></i></span></button>
+            <button type="button" class="node pump-node" data-node="pump" aria-pressed="false"><span>05 / 泵站</span><strong id="pump-rate">0.0 m³/min</strong><small>抽排仍受排口约束</small></button>
+            <div class="connector outfall-flow" id="outfall-flow" aria-hidden="true">↓ 排出</div>
+            <button type="button" class="node outfall-node" data-node="outfall" aria-pressed="false"><span>06 / 排口 → 受纳水体</span><strong id="outfall-rate">0.0 m³/min</strong><small id="outfall-limit">排口总上限 5 m³/min</small></button>
+          </div>
+          <p class="diagram-note">蓝色填充代表当前体积；地表以固定 500 m³ 示意满格（超出仍计入账本），不是积水深度。虚线仅在该通路有流量时流动。</p>
+        </div>
+        <aside class="detail" aria-labelledby="node-title" aria-live="polite">
+          <p class="eyebrow">点击节点 / 认识每一次接力</p><h3 id="node-title">地表径流</h3><p id="node-copy"></p><p class="life" id="node-life"></p>
+          <div class="limits"><h4>本次措施的容量边界</h4><p id="capacity-copy"></p><p>雨水口 ≤ 7 m³/min；管网暂存 ≤ 30 m³；重力排水 ≤ 4 m³/min；泵 ≤ 2 m³/min。重力与泵共用排口。</p></div>
+        </aside>
+      </div>
+
+      <section class="ledger" aria-labelledby="ledger-title"><div class="section-head"><h3 id="ledger-title">水量账本 <small>单位 m³ · 累计量与当前存量</small></h3><span id="balance-status" role="status">水量守恒</span></div><dl class="metrics"><div><dt>累计降雨输入</dt><dd id="metric-input">0</dd></div><div><dt>累计入渗</dt><dd id="metric-infiltration">0</dd></div><div><dt>管内现存</dt><dd id="metric-pipe">0</dd></div><div><dt>池内现存</dt><dd id="metric-storage">0</dd></div><div><dt>累计外排</dt><dd id="metric-discharge">0</dd></div><div><dt>地表现存</dt><dd id="metric-surface">0</dd></div></dl><p>降雨输入 = 入渗 + 管内 + 池内 + 外排 + 地表。<span id="balance-error"></span> 数字独立四舍五入，合计可能相差 0.1 m³。</p></section>
+      <section class="comparison" aria-labelledby="compare-title"><p class="eyebrow">相同强度 · 相同历时 · 相同排口 · 相同观察时刻</p><h3 id="compare-title">措施有用，但不是无限吸水。</h3><div class="table-scroll"><table><caption id="comparison-caption">当前时刻的配对比较</caption><thead><tr><th scope="col">同一事件</th><th scope="col">硬化基线</th><th scope="col">所选措施</th></tr></thead><tbody><tr><th scope="row">地表现存 / m³</th><td id="baseline-surface"></td><td id="selected-surface"></td></tr><tr><th scope="row">截至此刻地表峰值 / m³</th><td id="baseline-peak"></td><td id="selected-peak"></td></tr><tr><th scope="row">累计入渗 / m³</th><td id="baseline-infiltration"></td><td id="selected-infiltration"></td></tr><tr><th scope="row">池内现存 / m³</th><td>0.0</td><td id="selected-storage"></td></tr></tbody></table></div><p id="comparison-summary" role="status"></p></section>
+    </section>
+    <section class="boundaries" aria-labelledby="boundary-title"><p class="eyebrow">02 / 带走的不是预测，而是一种理解</p><h2 id="boundary-title">给水、污水、雨水，不是同一条路。</h2><div class="boundary-grid"><article><h3>这里模拟雨污分流</h3><p>本页只有雨水：降雨 → 入渗或径流 → 雨水管网 / 调蓄 → 受纳水体。自来水供应与生活污水处理不在这个水量账本里。现实城市也可能采用雨污合流制，路径和约束会不同。</p></article><article><h3>容量有限，水不会消失</h3><p>面积固定 10,000 m²，初始为空；每步 1 分钟，共 60 分钟。1 mm 降雨在这里等于 10 m³。先入渗、再进管、重力排水、分流调蓄、泵排；不模拟蒸发、地下回流、地形或水质。</p></article><article><h3>教学示意，不是防灾决策</h3><p>参数为虚构示例。地表水量不能换算成真实道路积水深度；这里不提供洪水预测、房产风险评估、安全预报或应急指南。海绵设施也不能保证暴雨时不积水。</p></article></div></section>
+    <p class="closing">城市的韧性，是让每一滴水都有去处，也承认每条路都有边界。</p>
+  </main>
+  <footer class="wrap"><a href="./index.html">← 返回城市系统目录</a><span>城市排水与防涝 / 教学模拟</span></footer>
+</body>
+</html>

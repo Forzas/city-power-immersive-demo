@@ -53,6 +53,11 @@
       <a href="#categories" aria-label="Explore the four perspectives">EXPLORE BELOW <span aria-hidden="true">↓</span></a>
     </div>
 
+    <section class="city-day-entry wrap" aria-labelledby="city-day-title">
+      <div><p class="eyebrow">ONE CITY / MANY CONNECTIONS</p><h2 id="city-day-title">同一座城的一天</h2><p>早高峰、暴雨、节假日：把九个系统放回同一座城市，看见它们如何相互影响。</p></div>
+      <a class="button button-primary" href="./city_day.html">Explore a connected day <span aria-hidden="true">↗</span></a>
+    </section>
+
     <section class="categories-section wrap" id="categories" aria-labelledby="categories-title">
       <div class="section-heading">
         <div><p class="eyebrow">01 / FIND YOUR PERSPECTIVE</p><h2 id="categories-title">One city. Many ways in.</h2></div>
@@ -62,22 +67,22 @@
         <a class="category-card" href="#topics" data-category="infrastructure">
           <svg class="category-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M6 40h52M13 40V20h14v20m10 0V8h14v32M18 14V8h12m12 6h4m-4 8h4m-4 8h4M7 29h6m14 0h10"/></svg>
           <span class="category-number">01 <span aria-hidden="true">↗</span></span>
-          <h3>Urban Infrastructure</h3><p>The networks hidden underground, behind walls, and far away keep everyday life running.</p><span class="category-count">3 topics</span>
+          <h3>Urban Infrastructure</h3><p>The networks hidden underground, behind walls, and far away keep everyday life running.</p><span class="category-count">5 topics</span>
         </a>
         <a class="category-card" href="#topics" data-category="energy">
           <svg class="category-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="m34 4-18 23h14l-2 17 20-25H34Z"/><path d="M14 9 9 5m42 35 5 4M8 24H2m60 0h-6M48 9l5-5"/></svg>
           <span class="category-number">02 <span aria-hidden="true">↗</span></span>
-          <h3>Energy &amp; Environment</h3><p>Every kilowatt-hour, drop of water, and breath of air is part of a much larger coordinated system.</p><span class="category-count">3 topics</span>
+          <h3>Energy &amp; Environment</h3><p>Every kilowatt-hour, drop of water, and breath of air is part of a much larger coordinated system.</p><span class="category-count">4 topics</span>
         </a>
         <a class="category-card" href="#topics" data-category="everyday">
           <svg class="category-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="m10 14 22-10 22 10v24L32 46 10 36Zm0 0 22 10 22-10M32 24v22M21 9l22 10v10"/></svg>
           <span class="category-number">03 <span aria-hidden="true">↗</span></span>
-          <h3>Everyday Systems</h3><p>Packages, elevators, and entire buildings operate through systems more complex than they appear.</p><span class="category-count">2 topics</span>
+          <h3>Everyday Systems</h3><p>Packages, elevators, and entire buildings operate through systems more complex than they appear.</p><span class="category-count">4 topics</span>
         </a>
         <a class="category-card" href="#topics" data-category="public">
           <svg class="category-icon" viewBox="0 0 64 48" aria-hidden="true"><path d="M32 3 52 11v12c0 11-20 22-20 22S12 34 12 23V11Zm0 10v20M22 23h20"/></svg>
           <span class="category-number">04 <span aria-hidden="true">↗</span></span>
-          <h3>Public Services &amp; Safety</h3><p>Emergency response, traffic operations, and public services keep a city moving through change.</p><span class="category-count">1 topic</span>
+          <h3>Public Services &amp; Safety</h3><p>Emergency response, traffic operations, and public services keep a city moving through change.</p><span class="category-count">2 topics</span>
         </a>
       </div>
     </section>
@@ -89,13 +94,13 @@
       </div>
       <div class="filter-bar">
         <div class="filters" role="group" aria-label="Filter topics by category" hidden>
-          <button type="button" class="filter active" data-filter="all" aria-pressed="true">All topics <span>6</span></button>
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">All topics <span>9</span></button>
           <button type="button" class="filter" data-filter="infrastructure" aria-pressed="false">Infrastructure</button>
           <button type="button" class="filter" data-filter="energy" aria-pressed="false">Energy &amp; environment</button>
           <button type="button" class="filter" data-filter="everyday" aria-pressed="false">Everyday systems</button>
           <button type="button" class="filter" data-filter="public" aria-pressed="false">Public services</button>
         </div>
-        <p id="result-count" class="result-count" role="status" aria-live="polite" aria-atomic="true">6 topics to discover</p>
+        <p id="result-count" class="result-count" role="status" aria-live="polite" aria-atomic="true">9 topics to discover</p>
       </div>
       <div class="demo-grid">
         <article class="demo-card featured" data-categories="infrastructure energy">
@@ -135,8 +140,26 @@
           </a>
           <div class="demo-content"><div class="tags"><span>Buildings</span><span>Coordination</span><span>Cross-section</span></div><h3>How a Building Works</h3><p>Electricity, water, elevators, and more. One building, many systems working as one.</p><div class="interaction"><span aria-hidden="true">⌁</span> Six systems, floor selection &amp; scenario switching</div><a class="card-action" href="./building_systems.html">Explore the system <span aria-hidden="true">↗</span></a></div>
         </article>
+        <article class="demo-card" data-categories="public everyday">
+          <a class="demo-art traffic-art" href="./traffic_flow.html" aria-label="Enter the traffic flow demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 007</span>
+            <svg viewBox="0 0 400 220" role="img" aria-label="Two connected intersections with vehicles and signal lights"><path class="art-grid" d="M0 70H400M0 150H400M100 0V220M300 0V220"/><path d="M0 110H400M120 0V220M280 0V220" stroke-width="32" opacity=".18"/><path d="M0 110H400M120 0V220M280 0V220" stroke-dasharray="6 9"/><rect x="144" y="46" width="21" height="62" rx="8" class="art-solid"/><circle cx="154" cy="61" r="5" fill="#e0aa88"/><circle cx="154" cy="92" r="5" fill="#c3edaa"/><rect x="233" y="130" width="21" height="62" rx="8" class="art-solid"/><circle cx="243" cy="145" r="5" fill="#e0aa88"/><circle cx="243" cy="176" r="5" fill="#c3edaa"/><path d="M22 96h20m15 0h20m100 28h20m15 0h20m90-28h20" stroke-width="7"/></svg>
+          </a>
+          <div class="demo-content"><div class="tags"><span>Traffic</span><span>Signals</span><span>Trade-offs</span></div><h3>Traffic Lights &amp; Traffic Flow</h3><p>Change signal timing. See why a shorter queue here can mean a longer wait elsewhere.</p><div class="interaction"><span aria-hidden="true">⌁</span> Two intersections, signal tuning &amp; baseline comparisons</div><a class="card-action" href="./traffic_flow.html">Explore the system <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="demo-card" data-categories="infrastructure everyday">
+          <a class="demo-art message-art" href="./message_journey.html" aria-label="Enter the phone message journey demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 008</span>
+            <svg viewBox="0 0 400 220" role="img" aria-label="A message passing from a phone through a network to another device"><path class="art-grid" d="m0 155 200-100 200 100M0 190 200 90l200 100"/><rect x="45" y="65" width="43" height="91" rx="8" class="art-solid"/><path d="M57 77h19m-14 66h10m20-33h63m87 0h64" stroke-dasharray="5 6"/><path d="m175 83 24-13 25 13v55l-25 13-24-13Z" class="art-solid"/><path d="m175 83 24 13 25-13m-25 13v55"/><rect x="312" y="65" width="43" height="91" rx="8" class="art-solid"/><path d="M324 77h19m-14 66h10"/><path d="M124 68q26-30 52 0m-44 9q18-20 36 0m-26 8q8-10 16 0"/><path d="M252 95h26v19h-26Zm0 0 13 10 13-10"/></svg>
+          </a>
+          <div class="demo-content"><div class="tags"><span>Digital networks</span><span>Communication</span></div><h3>The Journey of a Message</h3><p>Sent, accepted, delivered, read: four different moments behind one small message.</p><div class="interaction"><span aria-hidden="true">⌁</span> Wi-Fi/mobile routes, delivery states &amp; reconnection</div><a class="card-action" href="./message_journey.html">Explore the system <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="demo-card" data-categories="infrastructure energy">
+          <a class="demo-art drainage-art" href="./urban_drainage.html" aria-label="Enter the urban drainage demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 009</span>
+            <svg viewBox="0 0 400 220" role="img" aria-label="Rain reaching permeable ground, a storage tank and a drainage outfall"><path d="M0 108H400M0 118H400"/><path d="M40 23 30 48m60-25L80 48m60-25-10 25m60-25-10 25m60-25-10 25m60-25-10 25m60-25-10 25"/><path d="M80 118v43h90m70 0h120" stroke-width="5"/><path class="art-solid" d="M170 125h70v66h-70Z"/><path d="M173 163h64m-64 8h64m-64 8h64" opacity=".6"/><path d="m280 80-10 20m20-20-10 20m20-20-10 20m20-20-10 20"/><path d="M0 89q50-10 100 0t100 0t100 0t100 0" opacity=".6"/><path d="M355 130v60m0-14q15-12 30 0t30 0"/></svg>
+          </a>
+          <div class="demo-content"><div class="tags"><span>Stormwater</span><span>Storage</span><span>Resilience</span></div><h3>Where Does the Rain Go?</h3><p>Follow rainfall into infiltration, storage, discharge and surface water. Every drop must go somewhere.</p><div class="interaction"><span aria-hidden="true">⌁</span> Rainfall tuning, sponge-city comparison &amp; water balance</div><a class="card-action" href="./urban_drainage.html">Explore the system <span aria-hidden="true">↗</span></a></div>
+        </article>
       </div>
-      <p class="catalog-note">Six interactive journeys, one connected city. Some topics connect more than one category. Demo figures are educational simulations, not live operational data.</p>
+      <p class="catalog-note">Nine interactive topics, plus one connected-city experience. Category counts overlap. Demo figures are educational simulations, not live operational data.</p>
     </section>
 
     <section class="approach wrap" id="approach" aria-labelledby="approach-title">

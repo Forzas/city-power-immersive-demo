@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091c29">
+  <meta name="description" content="调一调两座路口的红绿灯：观察车辆、行人和下游瓶颈之间的真实取舍。确定性交通流教学实验。">
+  <title>绿灯之后 · 红绿灯与交通流</title>
+  <link rel="stylesheet" href="./traffic.css">
+  <script src="./traffic.js" defer></script>
+  <link rel="stylesheet" href="./city-context.css" />
+  <script src="./city-day-data.js" defer></script>
+  <script src="./city-context.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#explorer">跳到配时实验</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./index.html"><span aria-hidden="true">◈</span> CITY / UNDERSTOOD<small>公共服务与安全 × 日常系统</small></a>
+    <a class="home-link" href="./index.html">← 返回首页</a>
+  </header>
+  <main>
+    <section class="hero wrap" aria-labelledby="title">
+      <div><p class="eyebrow">城市的节拍 / TRAFFIC FLOW</p>
+        <h1 id="title">多一条车道，<br>为什么不一定<em>更快？</em></h1>
+        <p class="lede">绿灯放走的车，还要有地方接住。把两座路口连起来，看一次配时调整，如何改变另一条街、一个过街人的等待。</p>
+        <a class="start-link" href="#explorer">接管这 60 秒的城市节拍 <span aria-hidden="true">↘</span></a>
+        <p class="fine">两座路口 · 三种需求 · 同一段 10 分钟</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit"></div><div class="hero-road"></div>
+        <div class="hero-signal"><i></i><i></i><i></i></div>
+        <span class="art-label">不是让每盏灯都更绿<br><strong>而是让下一段路，也有余地。</strong></span>
+      </div>
+    </section>
+
+    <section class="wrap experiment" id="explorer" aria-labelledby="experiment-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 一场公平的配时实验</p><h2 id="experiment-title">把绿灯给谁？</h2></div><p class="fine">基准与调整：相同需求、相同起点、相同 600 秒</p></div>
+      <noscript><p class="notice">请启用 JavaScript 运行模型与回放。安全规则：主路、支路、行人分别放行；每段之间保留 3 秒全红。下游无空间时，上游不能继续放车。此页面不是道路设计或真实信号控制工具。</p></noscript>
+      <p id="scenario-notice" class="notice" role="status" hidden></p>
+      <div class="controls">
+        <div><label class="control-label" for="scenario">城市工况</label><select id="scenario" name="scenario">
+          <option value="normal">低流量 · 日常平峰</option>
+          <option value="peak">通勤高峰 · 到达更密</option>
+          <option value="congested">下游拥堵 · 出口受限</option>
+        </select><p id="scenario-description" class="fine">平峰的车与人，也需要分配等待。</p></div>
+        <div><label class="control-label" for="main-green">主路绿灯 <output id="green-value" for="main-green">26 秒</output></label>
+          <input id="main-green" type="range" min="16" max="36" step="1" value="26" aria-describedby="timing-help">
+          <p id="timing-help" class="fine">两路口同步调整；主路多 1 秒，支路少 1 秒。基准 26 秒。</p>
+        </div>
+        <button id="reset" type="button" class="secondary">重置全部</button>
+      </div>
+      <div class="timing-panel">
+        <div class="timing-heading"><h3>每一轮都给行人留出完整时间</h3><span>固定周期 60 秒 · B 比 A 晚 8 秒</span></div>
+        <div class="phase-strip" id="phase-strip" aria-label="信号相位分配"></div>
+        <p class="fine">独立相位：主路 → 全红 3 秒 → 支路 → 全红 3 秒 → 行人专用 12 秒 → 全红 3 秒。无转弯、无冲突放行；行人时两条机动车路都为红灯。</p>
+      </div>
+
+      <div class="map-card">
+        <div class="map-heading"><div><span class="live-dot" aria-hidden="true"></span><strong>调整方案 · 双路口回放</strong></div><span id="clock">00:00 / 10:00</span></div>
+        <p class="fine map-hint" id="map-help">青色＝主路车辆，琥珀色＝支路车辆，紫色＝行人；灯旁文字说明当前放行对象。队列最多绘制 18 个，数字为完整数量。小屏可横向查看路网。</p>
+        <div class="map-scroll" tabindex="0" role="region" aria-label="两路口交通流示意图，可横向滚动" aria-describedby="map-help">
+          <svg id="traffic-map" viewBox="0 0 1000 390" role="img" aria-labelledby="map-title map-desc">
+            <title id="map-title">A 与 B 两座相连路口</title><desc id="map-desc">车辆由左向右，经 A、路段、B 到出口。两座路口各有自下而上的支路和独立行人过街相位。</desc>
+            <defs><pattern id="map-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#254151" stroke-width=".6"/></pattern></defs>
+            <rect width="1000" height="390" fill="url(#map-grid)"/>
+            <g class="blocks"><rect x="34" y="35" width="108" height="88" rx="14"/><rect x="298" y="32" width="136" height="90" rx="14"/><rect x="480" y="50" width="84" height="72" rx="14"/><rect x="745" y="32" width="191" height="90" rx="14"/><rect x="36" y="290" width="106" height="65" rx="14"/><rect x="318" y="292" width="240" height="64" rx="14"/><rect x="758" y="289" width="182" height="66" rx="14"/></g>
+            <g class="roads"><path d="M0 210H1000M220 0V390M670 0V390"/></g>
+            <g class="road-lines"><path d="M0 210H175M270 210H620M720 210H1000M220 0V160M220 260V390M670 0V160M670 260V390"/></g>
+            <g class="crosswalk"><path d="M183 179V239M193 179V239M633 179V239M643 179V239"/></g>
+            <g class="map-label"><text x="35" y="163">主路 →</text><text x="375" y="163">连接路段 · 18 辆容量 · 行驶 8 秒</text><text x="800" y="163" id="exit-label">出口 → 60 辆/分</text><text x="245" y="340">支路 A ↑</text><text x="695" y="340">支路 B ↑</text></g>
+            <g id="vehicles" aria-hidden="true"></g>
+            <g id="pedestrians" aria-hidden="true"></g>
+            <g class="junction-label"><text x="208" y="107">A</text><text x="658" y="107">B</text></g>
+            <g class="signal" id="signal-a" transform="translate(145 65)"><rect width="125" height="25" rx="12"/><circle cx="13" cy="12.5" r="5"/><text x="26" y="17">全红</text></g>
+            <g class="signal" id="signal-b" transform="translate(595 65)"><rect width="125" height="25" rx="12"/><circle cx="13" cy="12.5" r="5"/><text x="26" y="17">全红</text></g>
+            <g class="queue-label"><text id="queue-a" x="30" y="257">A 主路 0 辆</text><text id="queue-b" x="465" y="257">B 主路 0 辆</text><text id="side-a" x="246" y="372">支路 0 辆</text><text id="side-b" x="696" y="372">支路 0 辆</text><text id="ped-a" x="105" y="289">待过街 0 人</text><text id="ped-b" x="555" y="289">待过街 0 人</text></g>
+          </svg>
+        </div>
+        <div class="playback">
+          <button type="button" id="motion-toggle" aria-pressed="false">暂停回放</button>
+          <label for="timeline">回放时刻</label><input id="timeline" type="range" min="0" max="600" step="1" value="0">
+          <button type="button" id="show-end" class="secondary">查看终点</button>
+        </div>
+        <p id="map-summary" class="map-summary">模型正在准备。</p>
+      </div>
+      <div class="node-buttons" role="group" aria-label="选择路网解释节点">
+        <button type="button" data-node="junction" aria-pressed="true">01 / 路口 A · 谁先走</button>
+        <button type="button" data-node="link" aria-pressed="false">02 / 连接路段 · 回溢</button>
+        <button type="button" data-node="exit" aria-pressed="false">03 / 路口 B · 瓶颈</button>
+        <button type="button" data-node="pedestrian" aria-pressed="false">04 / 行人 · 留出时间</button>
+      </div>
+      <aside class="detail-panel" aria-labelledby="node-title">
+        <div><p class="eyebrow">路网里的日常</p><h3 id="node-title">一条街的绿灯，是另一条街的红灯</h3></div>
+        <p id="node-copy">主路延长绿灯会压缩支路时间。两座路口都需要照顾支路，不存在对所有人都最好的单一配时。</p>
+        <p id="node-everyday" class="everyday">生活连接：开车上班和从小街骑行汇入的人，可能感受到相反的变化。</p>
+      </aside>
+
+      <div class="results" aria-labelledby="results-title">
+        <div class="section-heading"><div><p class="eyebrow">02 / 让取舍有数字</p><h2 id="results-title">不是只看主路快了多少</h2></div><p class="fine">以下为完整 600 秒结果，不随回放暂停而改变</p></div>
+        <p id="comparison-status" class="notice" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="基准与调整结果对比">
+          <table><caption id="results-caption">相同到达序列，空队列起步；等待包括尚未离开的人与车</caption>
+            <thead><tr><th scope="col">指标 / 单位</th><th scope="col">基准 · 主路 26 秒</th><th scope="col" id="adjusted-heading">调整 · 主路 26 秒</th><th scope="col">变化（调整 − 基准）</th></tr></thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+        <p class="fine">平均累计等待＝本次所有到达者已积累的排队秒数 ÷ 到达数量，含期末未服务者；不含行驶 8 秒。不是仅统计已通行者的平均，也不等于完整旅程耗时。回溢秒数统计 A 在主路绿灯、有车但路段已满的秒数。</p>
+        <button id="try-tradeoff" class="try-button" type="button">试一个取舍：高峰 + 主路绿灯 36 秒 ↗</button>
+      </div>
+    </section>
+    <section class="wrap assumptions" aria-labelledby="assumptions-title">
+      <p class="eyebrow">03 / 看得见的边界</p><h2 id="assumptions-title">这座小城，怎样计算？</h2>
+      <div class="assumption-grid">
+        <article><h3>到达可重复，不掷骰子</h3><p>每秒一步，共 600 秒，从空队列开始。固定速率按整数累积到达，两种方案逐秒使用同一批需求。主路车辆只在 A 进入，经 B 出口离开；两条支路各自独立进出。</p><p id="demand-description">到达率正在加载。</p></article>
+        <article><h3>空间与放行都有上限</h3><p>单一主路和单一支路在绿灯时最多各放 1 辆/秒；行人专用相位最多各放 3 人/秒。连接路段含行驶中与 B 排队车辆，合计最多 18 辆；行驶时间 8 秒，满载时 A 停止放入。</p><p>出口正常最多 60 辆/分，拥堵时 10 辆/分，容量不能储存到后续秒使用。支路离开后不进入连接路段。</p></article>
+        <article><h3>有意简化，不是控制建议</h3><p>省略对向车流、转弯、黄灯与驾驶反应，以固定 3 秒全红作为教学清空段；行人每轮都有 12 秒独占过街。过街在模型中当秒完成，不代表真实道路的安全过街时长。</p><p>不模拟车道扩建。是否增设车道有益，取决于需求和下游能力；本实验既不证明「加车道总有效」，也不证明「总无效」。不使用实时交通数据，不用于信号控制或道路设计。</p></article>
+      </div>
+    </section>
+    <section class="wrap conclusion"><p class="eyebrow">带走一个观察</p><h2>绿灯是一份时间预算，<br>道路是一份空间预算。</h2><p>下次等红灯时，看看前方路口是否还有空间，也看看身旁等待过街的人。城市的效率，藏在彼此的余地里。</p><a href="./index.html">← 回到城市，探索更多日常系统</a></section>
+  </main>
+  <footer class="wrap footer">CITY / UNDERSTOOD · 红绿灯与交通流 · 确定性教学模型，非实时数据</footer>
+</body>
+</html>

@@ -16,7 +16,7 @@ async function until(check, label) {
   throw new Error(`Timed out: ${label}`);
 }
 
-async function main() {
+async function main(extraChecks) {
   assert.ok(typeof WebSocket !== 'undefined', 'Node.js 22+ is required');
   assert.ok(fs.existsSync(browserPath), 'Set WATER_BROWSER to a Chromium executable');
   const profile = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'city-systems-check-'));
@@ -125,6 +125,7 @@ async function main() {
       await send('Emulation.setEmulatedMedia', { features: [] });
       console.log(`${kind}: scenario/node/choice matrix, visuals, keyboard, motion, five viewports and home round trip passed.`);
     }
+    if (extraChecks) await extraChecks({ send, evaluate, click, text, navigate, until });
     assert.deepEqual(errors, [], 'Browser exceptions');
   } finally {
     if (send) {
@@ -143,4 +144,5 @@ async function main() {
     fs.rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
   }
 }
-main().catch(error => { console.error(error); process.exitCode = 1; });
+module.exports = main;
+if (require.main === module) main().catch(error => { console.error(error); process.exitCode = 1; });

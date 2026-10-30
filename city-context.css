@@ -1,0 +1,5 @@
+.city-context { box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; width: min(1200px, calc(100% - 32px)); margin: 20px auto; padding: 18px 22px; background: #1d3029; color: #e7f2e7; border: 1px solid #718a65; border-radius: 8px; font: 13px/1.8 "Segoe UI", "Microsoft YaHei", sans-serif; position: relative; z-index: 1; }
+.city-context p { margin: 0; flex: 1 1 380px; }
+.city-context a { color: #d3efb7; text-decoration: underline; text-underline-offset: 4px; flex: 0 1 auto; }
+.city-context a:focus-visible { outline: 3px solid #d3efb7; outline-offset: 5px; }
+.city-context .context-warning { color: #ffce92; flex-basis: 100%; }

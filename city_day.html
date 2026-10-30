@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="在早高峰、暴雨与节假日之间切换，发现城市电水、交通、物流与数字网络如何彼此连接。" />
+  <title>同一座城的一天 · 城市系统联动</title>
+  <link rel="stylesheet" href="./city-day.css" />
+  <script src="./city-day-data.js" defer></script>
+  <script src="./city-day.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#city">跳到城市联动</a>
+  <header class="wrap topbar"><a href="./index.html" class="brand">CITY / UNDERSTOOD</a><a href="./index.html">← 返回全部专题</a></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">ONE CITY / MANY CONNECTIONS</p><h1>同一座城，<br /><em>不止一种连锁反应。</em></h1><p class="lede">把镜头拉远一点。早高峰、暴雨、节假日，改变的不只是一个系统。选择一个时刻，跟随连接，看懂日常背后的协作。</p><a class="primary" href="#city">进入这一天 ↓</a></section>
+    <noscript><p class="notice">请启用 JavaScript 切换场景、探索关联并保留返回位置。早高峰连接交通与楼宇需求，暴雨连接排水、能源与道路物流，节假日改变活动区域的客流、包裹与垃圾收运需求。也可从首页直接打开独立专题。</p></noscript>
+    <section id="city" aria-labelledby="city-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 换一个城市时刻</p><h2 id="city-title">每一种变化，都有它的上下游。</h2></div><button id="reset" type="button">重置到早高峰基线</button></div>
+      <p class="notice">策划式教学场景 · 不是耦合数值仿真或真实监测；关联表示本例的假设与可能影响，不代表必然故障，也不预测风险或到达时间。</p>
+      <p id="route-warning" class="warning" role="status" hidden></p>
+      <div id="scenario-controls" class="controls" role="group" aria-label="城市时刻"></div>
+      <div class="scenario" aria-live="polite" aria-atomic="true"><span id="city-time"></span><div><h3 id="scenario-title"></h3><p id="scenario-intro"></p></div></div>
+      <div class="city-grid">
+        <div class="city-map">
+          <div class="map-header"><span>CONNECTION ATLAS / 非地理比例</span><span class="live-dot">场景示意</span></div>
+          <svg class="connections" viewBox="0 0 600 560" preserveAspectRatio="none" aria-hidden="true"><path d="M100 90H500M100 270H500M100 450H500M100 90V450M300 90V450M500 90V450M100 90 500 450M500 90 100 450"/><circle cx="300" cy="270" r="95"/></svg>
+          <div id="system-map" class="system-map" role="group" aria-label="选择城市系统"></div>
+          <div class="legend"><span>● 本例直接变化</span><span>◐ 可能关联</span><span>○ 未设变化 / 一般说明</span></div>
+        </div>
+        <aside id="system-detail" class="detail" aria-labelledby="system-title" tabindex="-1">
+          <p class="eyebrow" id="effect-level"></p><h3 id="system-title"></h3><p id="system-effect"></p><p id="system-copy"></p><p class="mapping-note" id="mapping-note"></p><a class="primary" id="demo-link" href="./index.html">进入专题 ↗</a><p class="return-note">进入后可保留城市时刻并返回此处。专题里的指标仍来自各自独立的教学模型，不会自动变成联合计算。</p>
+        </aside>
+      </div>
+    </section>
+    <section class="chains-section" aria-labelledby="chains-title"><p class="eyebrow">02 / 沿着因果连接看</p><h2 id="chains-title">一件事，怎样影响另一件事？</h2><div id="chains" class="chains"></div></section>
+    <section class="interventions" aria-labelledby="action-title"><p class="eyebrow">03 / 试着换一种组织方式</p><h2 id="action-title">协调可以改变什么，又不能改变什么？</h2><div id="action-controls" class="controls" role="group" aria-label="概念干预"></div><div class="action-result" aria-live="polite" aria-atomic="true"><h3 id="action-name"></h3><p id="action-outcome"></p><p id="action-limit"></p></div></section>
+    <section class="closing"><p class="eyebrow">原来如此</p><h2>城市的韧性，<br /><em>也藏在系统之间的连接里。</em></h2><p>知道一个系统如何运行，是起点；理解它依赖谁、又影响谁，才能看见整座城市。</p><a href="./index.html">回到九个独立专题 ↗</a></section>
+  </main><footer class="wrap">CITY / UNDERSTOOD · 独立专题 + 跨专题探索</footer>
+</body>
+</html>
