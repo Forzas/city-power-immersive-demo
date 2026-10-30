@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101e30" />
+  <meta name="description" content="跟随一个包裹，探索下单、仓储、分拣、干线、末端配送与签收。切换延误和大促场景，理解物流背后的城市协作。" />
+  <title>包裹的一生 · 从下单到你手中</title>
+  <link rel="stylesheet" href="./package.css" />
+  <script src="./package.js" defer></script>
+</head>
+<body data-scenario="normal" data-paused="false">
+  <a class="skip-link" href="#journey">跳到包裹旅程</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./index.html"><span aria-hidden="true">◈</span> CITY / UNDERSTOOD<small>城市物流系统 / 004</small></a>
+    <a class="home-link" href="./index.html">← 返回首页</a>
+  </header>
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">看不见的城市 / 一件小事，一场接力</p>
+        <h1 id="hero-title">你点下「购买」，<br /><em>旅程才刚刚开始。</em></h1>
+        <p class="lede">一个纸箱，怎样穿过仓库、城市与街巷，来到你手中？跟随一件包裹，看看「正在运输」背后，究竟发生了什么。</p>
+        <a class="primary-link" href="#journey">拆开这段旅程 <span aria-hidden="true">↘</span></a>
+        <p class="hero-note">6 个环节 · 3 种场景 · 由你选择最后一站</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 550 350" fill="none">
+          <defs><pattern id="parcel-grid" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#7892b1" opacity=".3"/></pattern></defs>
+          <rect x="5" y="5" width="540" height="340" fill="url(#parcel-grid)"/>
+          <ellipse cx="278" cy="282" rx="162" ry="33" fill="#0b1725"/>
+          <path class="hero-route" d="M37 265H110V90H450V266H380" stroke="#78b8ff" stroke-width="2" stroke-dasharray="6 8"/>
+          <path d="m166 133 111-59 111 59-111 60Z" fill="#f3cf83" stroke="#ffdfa1" stroke-width="2"/>
+          <path d="M166 133v123l111 57V193Z" fill="#ca9750" stroke="#edba70" stroke-width="2"/>
+          <path d="m277 193 111-60v123l-111 57Z" fill="#e1ae62" stroke="#ffcf88" stroke-width="2"/>
+          <path d="m213 108 111 60 22-12-111-60Z" fill="#ffedc5"/>
+          <path d="m324 168 22-12v49l-22 12Z" fill="#f5d399"/>
+          <path d="m190 190 51 27v45l-51-26Z" fill="#fff2d6"/>
+          <path d="m198 208 33 17m-33-8 23 12m-23-4 30 16" stroke="#79562e" stroke-width="3"/>
+          <circle cx="110" cy="90" r="7" fill="#8bc3ff"/><circle cx="450" cy="266" r="7" fill="#fbd281"/>
+          <path d="M419 65h56v40h-56Zm13 12h30m-30 9h20" stroke="#8bc3ff" stroke-width="2"/>
+          <path d="m74 263 13-11 13 11v22H74Zm8 22v-12h11v12" stroke="#fbd281" stroke-width="2"/>
+        </svg>
+        <p>不只是一个纸箱，是一张协作网络。</p>
+      </div>
+    </section>
+
+    <section class="wrap explorer" id="journey" aria-labelledby="journey-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / 跟随一件包裹</p><h2 id="journey-title">从屏幕上的订单，到手中的实物。</h2></div>
+        <p class="hint">点击任意节点，拆解这一站。<br />也可以用 Tab 聚焦，Enter 或空格选择。</p>
+      </div>
+      <noscript><p class="notice">请启用 JavaScript 以切换场景和查看节点详情。流程概览仍可阅读：下单 → 仓储 → 分拣 → 干线运输 → 末端配送 → 签收。</p></noscript>
+      <div class="controls">
+        <div class="switch" role="group" aria-label="运输场景">
+          <button type="button" data-scenario="normal" aria-pressed="true">日常运输</button>
+          <button type="button" data-scenario="delay" aria-pressed="false">途中延误</button>
+          <button type="button" data-scenario="peak" aria-pressed="false">大促高峰</button>
+        </div>
+        <button type="button" id="motion-toggle" aria-pressed="false">暂停路线动画</button>
+      </div>
+      <div class="scenario-summary" role="status" aria-live="polite" aria-atomic="true">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div><h3 id="scenario-title">日常运输 · 有序接力</h3><p id="scenario-copy">仓库、分拣中心与运输班次相互衔接，包裹按目的地区域逐步汇集，再分送到街区。</p></div>
+      </div>
+      <p class="simulation-note">教学模拟 · 指标为人为设定的相对指数，仅用于比较场景；不是真实物流追踪、实测数据或到货时间承诺。动画不代表实际运输速度。</p>
+      <div class="metrics" aria-label="教学场景指标">
+        <div><span>包裹需求指数</span><strong id="demand-value">100</strong><small>日常场景 = 100</small></div>
+        <div><span>分拣等待指数</span><strong id="queue-value">20</strong><small>数值越高，积压越明显</small></div>
+        <div><span>干线运行状态</span><strong id="transport-value">有序衔接</strong><small id="transport-note">按班次集运，不是单件直送</small></div>
+      </div>
+      <div class="explorer-grid">
+        <div class="map-panel">
+          <div class="map-heading"><span>包裹接力图 <span aria-hidden="true">↗</span></span><small>流程示意 / 非真实地图</small></div>
+          <div class="journey-map">
+            <svg class="route-map" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
+              <path class="route-bed" d="M100 90H500V270H100"/>
+              <path class="route-flow" d="M100 90H500V270H100"/>
+              <path class="delay-segment" d="M500 110V245"/>
+              <path class="route-arrows" d="m195 84 8 6-8 6m190-12 8 6-8 6m109 84 6 8 6-8m-111 96-8 6 8 6m-190-12-8 6 8 6"/>
+            </svg>
+            <button type="button" class="journey-node" data-node="order" aria-pressed="true" aria-controls="node-detail"><small>01 / START</small><span class="node-icon" aria-hidden="true">▤</span><strong>下单建单</strong><span>信息先出发</span></button>
+            <button type="button" class="journey-node" data-node="warehouse" aria-pressed="false" aria-controls="node-detail"><small>02 / PREPARE</small><span class="node-icon" aria-hidden="true">▥</span><strong>仓储打包</strong><span>找货 · 核对 · 封箱</span></button>
+            <button type="button" class="journey-node" data-node="sorting" aria-pressed="false" aria-controls="node-detail"><small>03 / SORT</small><span class="node-icon" aria-hidden="true">⑂</span><strong>自动分拣</strong><span>扫码，找到下一站</span></button>
+            <button type="button" class="journey-node" data-node="longhaul" aria-pressed="false" aria-controls="node-detail"><small>04 / CONNECT</small><span class="node-icon" aria-hidden="true">⇄</span><strong>干线运输</strong><span>跨越城市的距离</span></button>
+            <button type="button" class="journey-node" data-node="lastmile" aria-pressed="false" aria-controls="node-detail"><small>05 / NEAR YOU</small><span class="node-icon" aria-hidden="true">⌂</span><strong>末端配送</strong><span id="lastmile-short">预约送货上门</span></button>
+            <button type="button" class="journey-node" data-node="receipt" aria-pressed="false" aria-controls="node-detail"><small>06 / ARRIVE</small><span class="node-icon" aria-hidden="true">✓</span><strong>交接签收</strong><span>确认，才算完成</span></button>
+          </div>
+          <p class="map-caption"><span class="parcel-dot" aria-hidden="true">▣</span>虚线表示包裹接力方向；高亮节点是你正在探索的环节。</p>
+          <div class="timeline" role="group" aria-label="按顺序选择旅程环节">
+            <button type="button" data-step="order" aria-pressed="true" aria-controls="node-detail">01 下单</button>
+            <button type="button" data-step="warehouse" aria-pressed="false" aria-controls="node-detail">02 仓储</button>
+            <button type="button" data-step="sorting" aria-pressed="false" aria-controls="node-detail">03 分拣</button>
+            <button type="button" data-step="longhaul" aria-pressed="false" aria-controls="node-detail">04 干线</button>
+            <button type="button" data-step="lastmile" aria-pressed="false" aria-controls="node-detail">05 末端</button>
+            <button type="button" data-step="receipt" aria-pressed="false" aria-controls="node-detail">06 签收</button>
+          </div>
+        </div>
+        <section class="detail-panel" id="node-detail" aria-labelledby="node-title">
+          <p class="eyebrow" id="node-index">正在探索 / 01</p>
+          <div class="detail-heading" aria-live="polite" aria-atomic="true"><h3 id="node-title">下单建单</h3><p id="node-question">订单生成了，包裹就出发了吗？</p></div>
+          <p id="node-copy">还没有。系统先核对商品、地址与库存，选择合适的发货仓，生成订单与运单信息。电子信息往往比纸箱先走一步。</p>
+          <dl>
+            <dt>你熟悉的那一刻</dt><dd id="node-life">页面显示「待发货」，通常意味着商家还在准备商品，并非快递已经上路。</dd>
+            <dt>技术在做什么</dt><dd id="node-tech">库存系统与订单系统协同分配货物；运单编码让后续扫描能识别这一件包裹。</dd>
+            <dt>当前场景下</dt><dd id="node-scenario">系统根据库存与服务范围分配订单，发货仓不一定是距离你最近的仓库。</dd>
+          </dl>
+          <div class="detail-nav"><button type="button" id="previous-node" disabled>← 上一环节</button><button type="button" id="next-node">下一环节 →</button></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="wrap delivery-section" aria-labelledby="delivery-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / 最后一公里，由你参与</p><h2 id="delivery-title">同一件包裹，不同的最后一站。</h2></div><p class="hint">选择交接方式，末端与签收说明会随之改变。</p></div>
+      <div class="delivery-layout">
+        <div class="delivery-choices" role="group" aria-label="收件方式">
+          <button type="button" data-delivery="door" aria-pressed="true" aria-controls="delivery-detail"><span aria-hidden="true">⌂</span><strong>送货上门</strong><small>协调一次面对面交接</small></button>
+          <button type="button" data-delivery="locker" aria-pressed="false" aria-controls="delivery-detail"><span aria-hidden="true">▦</span><strong>智能快递柜</strong><small>把配送与取件时间错开</small></button>
+          <button type="button" data-delivery="pickup" aria-pressed="false" aria-controls="delivery-detail"><span aria-hidden="true">▱</span><strong>社区驿站</strong><small>集中到站，再自行领取</small></button>
+        </div>
+        <div class="delivery-detail" id="delivery-detail" aria-live="polite" aria-atomic="true"><h3 id="delivery-heading">送货上门 · 多一份协调</h3><p id="delivery-copy">配送员需要结合楼栋位置、通行条件与你可收件的时间安排路线。逐户交接更直接，但一次未能联系上，也可能需要再次预约。</p><p class="tradeoff" id="delivery-tradeoff">你可以做的：核对地址与联系方式，协商可交接的时间和位置。</p></div>
+      </div>
+      <p class="simulation-note">实际交接应尊重收件人选择并遵循当地规则与服务约定；柜机、驿站的开放时间、容量、收费和保管期限请以实际公示为准。</p>
+    </section>
+    <section class="wrap takeaway" aria-labelledby="takeaway-title">
+      <p class="eyebrow">03 / 带走一个新视角</p><h2 id="takeaway-title">你收到的不只是包裹，<br />也是一整张网络的协作。</h2>
+      <div class="takeaway-grid"><p><strong>扫描是线索，不是定位器。</strong>物流记录来自关键节点的扫描与回传；没有新记录，不等于包裹没有移动。</p><p><strong>快，不等于每件单独跑。</strong>集货、分拣与班次衔接，让同方向的包裹共享运力；等待与效率需要平衡。</p><p><strong>最后一站，需要双方配合。</strong>遇到异常先通过官方渠道核实；不要向陌生来电透露取件码、验证码或付款信息。</p></div>
+    </section>
+  </main>
+  <footer class="wrap footer"><a href="./index.html">← 返回城市系统目录</a><span>科普流程示意 · 不接入真实订单</span></footer>
+</body>
+</html>

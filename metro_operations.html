@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="探索地铁行车、车站客流与调度协作，切换平峰、高峰和局部延误场景。" />
+  <title>地铁的一天 · 城市系统探索</title>
+  <link rel="stylesheet" href="./systems.css" />
+  <script src="./systems-data.js" defer></script>
+  <script src="./systems.js" defer></script>
+</head>
+<body data-demo="metro">
+  <a class="skip" href="#explorer">跳到交互区域</a>
+  <header class="wrap topbar"><a href="./index.html" class="brand">CITY / UNDERSTOOD</a><a href="./index.html">← 返回全部专题</a></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">SYSTEM / 005 · PUBLIC SERVICES</p><h1>下一班列车，<br /><em>是一整套系统的准时。</em></h1><p class="lede">从车辆出库到末班回库，看见列车、信号、车站和调度如何一起工作。</p><a class="button" href="#explorer">走进运营控制台 ↓</a></section>
+    <noscript><p class="notice">请启用 JavaScript 使用交互。地铁运营包括车辆整备、信号间隔控制、车站客流组织、换乘协调与回库检修。高峰加密服务仍受线路、信号与车辆能力约束，延误时必须先保障安全。</p></noscript>
+    <section id="explorer" aria-labelledby="explorer-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 一条线路，多方协作</p><h2 id="explorer-title">试着改变城市的节奏。</h2></div><p>选择场景，再点击运营节点。</p></div>
+      <div class="controls"><div id="scenarios" role="group" aria-label="运营场景"></div><button id="motion" type="button" aria-pressed="false">暂停动画</button></div>
+      <div class="scenario-summary" role="status" aria-live="polite" aria-atomic="true"><h3 id="scenario-title"></h3><p id="scenario-description"></p></div>
+      <p class="notice">教学模拟 · 线路、数值与工况均为虚构示意，不是实时列车信息、服务承诺或运营指令。</p>
+      <div class="metrics" id="metrics"></div>
+      <div class="explorer-grid">
+        <div class="map-panel"><div class="map-heading"><span>城市环线 / 示意运营图</span><span id="map-state"></span></div>
+          <div class="metro-map" aria-hidden="true">
+            <svg viewBox="0 0 760 340"><path class="map-grid" d="M0 80H760M0 160H760M0 240H760M100 0V340M250 0V340M400 0V340M550 0V340M700 0V340"/><path class="river" d="M0 310Q150 160 300 290T760 250"/><path class="track-bed" d="M80 120H580Q680 120 680 210T580 300H180Q80 300 80 210Z"/><path class="track" d="M80 120H580Q680 120 680 210T580 300H180Q80 300 80 210Z"/><path class="disruption" d="M350 120H500"/><g class="station-dots"><circle cx="80" cy="120" r="10"/><circle cx="240" cy="120" r="10"/><circle cx="420" cy="120" r="14"/><circle cx="580" cy="120" r="10"/><circle cx="580" cy="300" r="10"/><circle cx="240" cy="300" r="10"/></g><g class="map-labels"><text x="80" y="90">西城</text><text x="240" y="90">市民广场</text><text x="420" y="90">中央换乘</text><text x="580" y="90">东城</text><text x="580" y="275">大学城</text><text x="240" y="275">车辆段联络</text></g></svg>
+            <span class="train train-a"></span><span class="train train-b"></span><span class="train train-c"></span>
+          </div><p class="map-caption">发光点为列车示意；橙色区段表示局部延误，并非真实列车定位。</p><div class="nodes" id="nodes" role="group" aria-label="运营节点"></div>
+        </div>
+        <aside class="detail" id="detail" aria-labelledby="detail-title" tabindex="-1"><p class="eyebrow" id="detail-index"></p><h3 id="detail-title"></h3><p id="detail-description"></p><div class="insight"><h4>为什么与你有关</h4><p id="detail-life"></p></div><div class="response"><h4>当前场景中的协作</h4><p id="detail-response"></p></div><div class="step-controls"><button type="button" id="previous">← 上一环节</button><button type="button" id="next">下一环节 →</button></div></aside>
+      </div>
+    </section>
+    <section class="choices-section"><p class="eyebrow">02 / 换一个视角</p><h2>同一条线路，不同的体验。</h2><div id="choices" class="choices" role="group" aria-label="观察视角"></div><div class="choice-detail"><h3 id="choice-title"></h3><p id="choice-description"></p></div></section>
+    <section class="takeaway"><p class="eyebrow">原来如此</p><h2>地铁不是让每辆车都跑得更快，<br /><em>而是让整条线有序地协作。</em></h2><p>车站停留、换乘客流和车辆周转彼此关联。安全间隔和乘客组织，比单纯提速更重要。</p><a href="./index.html">继续探索城市 ↗</a></section>
+  </main><footer class="wrap">CITY / UNDERSTOOD · 教学原型，非真实运营系统</footer>
+</body>
+</html>

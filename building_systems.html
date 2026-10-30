@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="通过楼宇剖面，探索电力、给排水、空调、电梯、消防与网络如何协作。" />
+  <title>一栋楼如何运转 · 城市系统探索</title>
+  <link rel="stylesheet" href="./systems.css" />
+  <script src="./systems-data.js" defer></script>
+  <script src="./systems.js" defer></script>
+</head>
+<body data-demo="building">
+  <a class="skip" href="#explorer">跳到交互区域</a>
+  <header class="wrap topbar"><a href="./index.html" class="brand">CITY / UNDERSTOOD</a><a href="./index.html">← 返回全部专题</a></header>
+  <main class="wrap">
+    <section class="hero"><p class="eyebrow">SYSTEM / 006 · EVERYDAY SYSTEMS</p><h1>你走进一栋楼，<br /><em>六套系统已经就位。</em></h1><p class="lede">亮起的灯、流出的水、舒适的空气与抵达的电梯，背后不是独立设备，而是一张协作网络。</p><a class="button" href="#explorer">打开建筑剖面 ↓</a></section>
+    <noscript><p class="notice">请启用 JavaScript 使用交互。楼宇由供配电、给排水、暖通、电梯、消防与通信网络共同支撑。检修需要专业人员按规程进行，本页不是设备操作或应急指南。</p></noscript>
+    <section id="explorer" aria-labelledby="explorer-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 看见墙壁背后的连接</p><h2 id="explorer-title">拆开看的不是楼，而是协作。</h2></div><p>选择系统，观察剖面中的对应线路。</p></div>
+      <div class="controls"><div id="scenarios" role="group" aria-label="建筑场景"></div><button id="motion" type="button" aria-pressed="false">暂停动画</button></div>
+      <div class="scenario-summary" role="status" aria-live="polite" aria-atomic="true"><h3 id="scenario-title"></h3><p id="scenario-description"></p></div>
+      <p class="notice">教学模拟 · 负荷与楼层均为示意，不是工程设计、设备操作或应急指南。实际系统由专业人员依规管理。</p>
+      <div class="metrics" id="metrics"></div>
+      <div class="explorer-grid">
+        <div class="map-panel"><div class="map-heading"><span>城市综合楼 / 非工程比例剖面</span><span id="map-state"></span></div>
+          <div class="building-map" aria-hidden="true">
+            <div class="roof">屋顶设备 · 散热 / 通风</div>
+            <div class="floor" data-floor="high"><span class="floor-index">18F</span><div class="room"><span>居住空间</span><i></i><i></i><i></i></div></div>
+            <div class="floor" data-floor="office"><span class="floor-index">08F</span><div class="room"><span>办公空间</span><i></i><i></i><i></i><i></i></div></div>
+            <div class="floor" data-floor="lobby"><span class="floor-index">01F</span><div class="room"><span>公共大堂</span><i></i><i></i></div></div>
+            <div class="floor plant" data-floor="plant"><span class="floor-index">B1</span><div class="room"><span>分区设备 · 机电 / 泵房 / 通信</span><i></i><i></i><i></i></div></div>
+            <div class="risers"><i data-riser="power"></i><i data-riser="water"></i><i data-riser="hvac"></i><i data-riser="lift"></i><i data-riser="safety"></i><i data-riser="network"></i></div>
+          </div><p class="map-caption">高亮竖线标出所选系统；真实楼宇的设备、管线与防火分区远比示意图复杂。</p><div class="nodes" id="nodes" role="group" aria-label="建筑系统"></div>
+        </div>
+        <aside class="detail" id="detail" aria-labelledby="detail-title" tabindex="-1"><p class="eyebrow" id="detail-index"></p><h3 id="detail-title"></h3><p id="detail-description"></p><div class="insight"><h4>为什么与你有关</h4><p id="detail-life"></p></div><div class="response"><h4>当前场景中的协作</h4><p id="detail-response"></p></div><div class="step-controls"><button type="button" id="previous">← 上一系统</button><button type="button" id="next">下一系统 →</button></div></aside>
+      </div>
+    </section>
+    <section class="choices-section"><p class="eyebrow">02 / 逐层观察</p><h2>同一栋楼，不同的需求。</h2><div id="choices" class="choices" role="group" aria-label="选择楼层区域"></div><div class="choice-detail"><h3 id="choice-title"></h3><p id="choice-description"></p></div></section>
+    <section class="takeaway"><p class="eyebrow">原来如此</p><h2>建筑的舒适，<br /><em>来自系统之间不露声色的配合。</em></h2><p>把空间分区、把负荷错峰、为必要功能保留保障，比把每台设备都开到最大更有意义。</p><a href="./index.html">继续探索城市 ↗</a></section>
+  </main><footer class="wrap">CITY / UNDERSTOOD · 教学原型，非设备操作指南</footer>
+</body>
+</html>

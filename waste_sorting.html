@@ -2,48 +2,102 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>垃圾分类科普</title>
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="跟随一片菜叶、一个纸箱、一支废荧光灯管或一张用过的纸巾，探索分类之后的城市旅程。">
+  <meta name="theme-color" content="#091c29">
+  <title>分类之后 · 垃圾的城市旅程</title>
+  <link rel="stylesheet" href="./waste.css">
+  <script src="./waste.js" defer></script>
 </head>
-<body>
-  <header>
-    <p><a href="./index.html">← 返回首页 / All topics</a></p>
-    <h1>垃圾分类科普</h1>
-    <p>了解垃圾分类背后的复杂流程：从分类到转运、处理和资源再利用。</p>
+<body data-stream="food" data-scenario="normal">
+  <a class="skip-link" href="#journey">跳到互动旅程</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./index.html"><span aria-hidden="true">◈</span> CITY / UNDERSTOOD<small>城市固废系统 / 003</small></a>
+    <a class="home-link" href="./index.html">← 返回首页</a>
   </header>
-
   <main>
-    <section>
-      <h2>不同垃圾的归宿</h2>
-      <p>选择一种垃圾类型，探索它的旅程：</p>
-      <ul>
-        <li>厨余垃圾</li>
-        <li>可回收垃圾</li>
-        <li>有害垃圾</li>
-        <li>其他垃圾</li>
-      </ul>
+    <section class="hero wrap" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">看不见的城市 / 扔掉，不是终点</p>
+        <h1 id="title">合上垃圾桶，<br><em>旅程才刚刚开始。</em></h1>
+        <p class="lede">一片菜叶，可能变成能源；一个纸箱，可能再次成为纸张。跟着你手里的小物件，看看分类之后，城市怎样接力。</p>
+        <a class="start-link" href="#journey">跟随一件垃圾出发 <span aria-hidden="true">↘</span></a>
+        <p class="fine">4 类物件 · 3 种工况 · 约 3 分钟探索</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="city-block block-a"></div><div class="city-block block-b"></div><div class="city-block block-c"></div>
+        <div class="hero-symbol">↻</div>
+        <div class="art-label">从「丢弃」到「去向」<small>NOT GONE. JUST GOING SOMEWHERE.</small></div>
+      </div>
     </section>
 
-    <section>
-      <h2>操作模式</h2>
-      <p>查看系统如何应对以下场景：</p>
-      <ul>
-        <li>正常分类日</li>
-        <li>高错误率处理</li>
-        <li>假期高峰</li>
-      </ul>
+    <section class="wrap explorer" id="journey" aria-labelledby="journey-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / 选一件物品，追踪它的去向</p><h2 id="journey-title">你今天，要扔什么？</h2></div><p class="fine">点击节点查看处理细节<br>支持 Tab、Enter 与空格操作</p></div>
+      <noscript><p class="notice">请启用 JavaScript 使用物品选择、投放判断、场景切换和节点说明。下方保留四类去向及安全提醒。</p></noscript>
+      <div class="item-grid" role="group" aria-label="选择要丢弃的物品">
+        <button type="button" class="item" data-item="food" aria-pressed="true"><span class="item-icon" aria-hidden="true">❧</span><span><strong>一片菜叶</strong><small>厨余垃圾 / FOOD</small></span><span class="item-number">01</span></button>
+        <button type="button" class="item" data-item="recycle" aria-pressed="false"><span class="item-icon" aria-hidden="true">▱</span><span><strong>一个干净纸箱</strong><small>可回收物 / MATERIAL</small></span><span class="item-number">02</span></button>
+        <button type="button" class="item" data-item="hazard" aria-pressed="false"><span class="item-icon" aria-hidden="true">⊖</span><span><strong>一支废荧光灯管</strong><small>有害垃圾 / SPECIAL</small></span><span class="item-number">03</span></button>
+        <button type="button" class="item" data-item="residual" aria-pressed="false"><span class="item-icon" aria-hidden="true">▧</span><span><strong>一张用过的纸巾</strong><small>其他垃圾 / RESIDUAL</small></span><span class="item-number">04</span></button>
+      </div>
+      <div class="sorting-task">
+        <div><h3>先试着投放</h3><p id="sort-question">一片菜叶应该放进哪一类收集容器？</p></div>
+        <div class="bin-choices" role="group" aria-label="选择投放分类">
+          <button type="button" data-bin="food">厨余垃圾</button><button type="button" data-bin="recycle">可回收物</button><button type="button" data-bin="hazard">有害垃圾</button><button type="button" data-bin="residual">其他垃圾</button>
+        </div>
+        <p id="sort-feedback" class="feedback" role="status">先猜一猜，再沿着下方路线找答案。分类名称与收运方式请以当地规定为准。</p>
+      </div>
+      <div class="control-bar">
+        <div class="scenario-switch" role="group" aria-label="城市运行场景">
+          <button type="button" data-mode="normal" aria-pressed="true">◉ 正常分类日</button>
+          <button type="button" data-mode="error" aria-pressed="false">↯ 高错误率</button>
+          <button type="button" data-mode="holiday" aria-pressed="false">↗ 假期高峰</button>
+        </div>
+        <button type="button" id="motion-toggle" aria-pressed="false">暂停路线动画</button>
+      </div>
+      <div class="scenario-banner" role="status" aria-live="polite" aria-atomic="true"><h3 id="scenario-title">正常分类日 · 各走各的路</h3><p id="scenario-copy">分类收集、分类运输，让不同物料进入适合的处理设施。</p></div>
+      <div class="metrics" aria-label="当前工况">
+        <div><span>收运压力</span><strong id="load-value">平稳</strong></div>
+        <div><span>分拣工作</span><strong id="sort-value">常规复核</strong></div>
+        <div><span>本件物品的主去向</span><strong id="destination-value">沼气利用与消化残余物管理</strong></div>
+      </div>
+      <p class="fine model-note">教学示意：路线与工况不代表实时数据；各地设施配置不同，非所有城市都采用图示工艺。</p>
+      <div class="journey-grid">
+        <div class="map-panel">
+          <div class="map-heading"><span>城市接力图 / <strong id="route-name">厨余资源化路线</strong></span><span>非地理比例</span></div>
+          <div class="waste-map">
+            <svg class="route-svg" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true">
+              <path class="route-bed" d="M100 85H500V255H100"></path>
+              <path id="route-path" class="route-flow" d="M100 85H500V255H100"></path>
+              <path class="direction-arrows" d="m190 79 9 6-9 6m200-12 9 6-9 6m95 76 6 9 6-9m-106 82-9 6 9 6m-200-12-9 6 9 6"></path>
+            </svg>
+            <div class="route-nodes" id="route-nodes"></div>
+          </div>
+          <div class="route-note"><span class="route-key" aria-hidden="true"></span><p id="route-note">实线去向不等于全部产物；末端仍需管理残余物。</p></div>
+        </div>
+        <aside class="detail-panel" aria-labelledby="node-title">
+          <p class="eyebrow" id="node-step">站点 01 / 06</p><h3 id="node-title">家庭分类</h3>
+          <p id="node-copy">沥去多余水分，按当地要求将菜叶投放到厨余收集容器。</p>
+          <div class="detail-context"><span>此刻的城市</span><p id="node-context">源头分开投放，为后续资源化创造条件。</p></div>
+          <div class="destination-tag"><span>最终并非「消失」</span><strong id="node-destination">沼气利用与消化残余物管理</strong></div>
+          <div class="step-controls"><button type="button" id="previous-node" disabled>← 上一站</button><button type="button" id="next-node">下一站 →</button></div>
+        </aside>
+      </div>
+      <p id="journey-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
     </section>
 
-    <section>
-      <h2>科普互动</h2>
-      <p>通过点击和图示了解垃圾分类每一步的处理方式。</p>
+    <section class="wrap destinations" aria-labelledby="destinations-title">
+      <p class="eyebrow">02 / 四种去向，不是一个终点</p><h2 id="destinations-title">分类的意义，在下一站。</h2>
+      <div class="destination-grid">
+        <article data-destination="food" class="active"><span>01 / 厨余垃圾</span><h3>生物处理 → 能源</h3><p>示例采用厌氧消化回收沼气。消化液、消化渣仍须规范处理；不是直接变成可用肥料。</p></article>
+        <article data-destination="recycle"><span>02 / 可回收物</span><h3>再生加工 → 新材料</h3><p>干净纸箱经分选、制浆后成为再生纸原料。杂质和不适合回收的部分另行处理。</p></article>
+        <article data-destination="hazard"><span>03 / 有害垃圾</span><h3>专门收运 → 安全处置</h3><p>废荧光灯管含汞，交指定收集点和有资质单位管理。不要自行拆解、破碎或尝试无害化处理。</p></article>
+        <article data-destination="residual"><span>04 / 其他垃圾</span><h3>焚烧发电 → 残余物管理</h3><p>示例进入生活垃圾焚烧厂。烟气须净化；炉渣、飞灰分别管理，飞灰经符合要求的处理后按规定处置。焚烧不等于零废物。</p></article>
+      </div>
     </section>
+    <section class="wrap takeaways" aria-labelledby="takeaway-title"><div><p class="eyebrow">带走一个新认识</p><h2 id="takeaway-title">你分开的，<br>是城市的下一种可能。</h2></div><div><h3>看起来同车，不等于可以混投</h3><p>分仓车辆或不同时段收运可能共用车辆；真正混装会破坏分类效果。是否规范，需要结合实际收运方式判断。</p><h3>先查本地规则，再做投放决定</h3><p>不同地区分类名称、具体物品归类与预约收运要求可能不同。本页以四分类作科普示例，不替代当地投放指引；有害垃圾应交指定渠道，不要 DIY 处理。</p></div></section>
   </main>
-
-  <footer>
-    <p>沉浸式学习项目 - 垃圾分类专题</p>
-  </footer>
-
+  <footer class="wrap footer"><span>CITY / UNDERSTOOD · 让日常背后的系统被看见</span><a href="./index.html">探索其他城市系统 ↗</a></footer>
 </body>
 </html>

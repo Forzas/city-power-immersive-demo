@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="跟随一滴水，从水源、净水厂与高楼水龙头，到污水处理和再生利用。可交互的城市水系统科普。" />
+  <meta name="theme-color" content="#091c29" />
+  <title>城市供水 · 一滴水的城市旅行</title>
+  <link rel="stylesheet" href="./water.css" />
+  <script src="./water.js" defer></script>
+</head>
+<body data-scenario="normal" data-zone="high">
+  <a class="skip-link" href="#journey" data-i18n="skip">跳到水的旅程</a>
+  <header class="topbar wrap">
+    <a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">◈</span> CITY / UNDERSTOOD <span class="edition" data-i18n="edition">城市水系统 / 002</span></a>
+    <div class="top-actions">
+      <a class="home-link" href="./index.html" data-i18n="home">← 返回首页</a>
+      <div class="language-switch" role="group" aria-label="Language / 语言">
+        <button type="button" data-lang="zh" aria-pressed="true">中</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">看不见的城市 / 每一滴，都有来处</p>
+        <h1 id="hero-title"><span data-i18n="titleA">拧开水龙头，</span><br /><em data-i18n="titleB">一座城市在流动。</em></h1>
+        <p class="lede" data-i18n="intro">水不会凭空出现，也不会在下水口消失。跟随一滴水，穿过地下管网与高楼，看看日常背后的接力。</p>
+        <a class="primary-link" href="#journey"><span data-i18n="start">开始一滴水的旅行</span> <span aria-hidden="true">↓</span></a>
+        <p class="hero-note" data-i18n="heroNote">8 个环节 · 3 种工况 · 约 3 分钟探索</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 580 330">
+          <defs>
+            <linearGradient id="water-glow" x2="0" y2="1"><stop stop-color="#55d9ee" stop-opacity=".25"/><stop offset="1" stop-color="#55d9ee" stop-opacity="0"/></linearGradient>
+            <pattern id="windows" width="22" height="25" patternUnits="userSpaceOnUse"><rect x="7" y="7" width="5" height="10" rx="1" fill="#6fe1ee" opacity=".5"/></pattern>
+          </defs>
+          <ellipse cx="300" cy="275" rx="255" ry="40" fill="#163848"/>
+          <path d="M25 260 290 160 555 260 290 325Z" fill="#0f2b3c" stroke="#315164"/>
+          <path d="M40 265 290 175 540 265M90 285 340 193M155 306 405 215M95 240 345 307M160 214 410 282" stroke="#244658" fill="none"/>
+          <circle cx="430" cy="70" r="52" fill="url(#water-glow)"/>
+          <path d="M70 233V170l50-22 48 22v63l-48 24Z" fill="#193e50" stroke="#4b8aa1"/>
+          <path d="m70 170 50 22 48-22m-48 22v65" fill="none" stroke="#4b8aa1"/>
+          <path d="M236 226V54l58-25 64 30v173l-59 27Z" fill="#14374a" stroke="#64b6c8"/>
+          <path d="m236 54 63 29 59-24m-59 24v176" fill="none" stroke="#64b6c8"/>
+          <path d="M248 70v145l36 17V87Z" fill="url(#windows)"/>
+          <path d="M375 247V144l47-20 47 23v101l-47 22Z" fill="#1b4152" stroke="#4b8aa1"/>
+          <path d="m375 144 47 23 47-20m-47 20v103" fill="none" stroke="#4b8aa1"/>
+          <path d="M387 165v68l25 12v-68Z" fill="url(#windows)"/>
+          <path class="hero-pipe" d="m36 265 84-31 86 31 90-34V95" fill="none" stroke="#6fe1ee" stroke-width="5"/>
+          <path class="hero-drain" d="M323 94v164l97 37 120-44" fill="none" stroke="#efba7d" stroke-width="4" stroke-dasharray="8 6"/>
+          <path d="M180 104c0-15 17-34 17-34s17 19 17 34a17 17 0 0 1-34 0Z" fill="#7fe7f3"/>
+          <circle cx="120" cy="234" r="7" fill="#8ef0ec"/><circle cx="296" cy="95" r="7" fill="#8ef0ec"/>
+        </svg>
+        <span class="art-caption" data-i18n="artCaption">地上是生活，地下是连接。</span>
+      </div>
+    </section>
+
+    <section class="explorer wrap" id="journey" aria-labelledby="journey-title">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-i18n="journeyEyebrow">01 / 一滴水的完整旅程</p><h2 id="journey-title" data-i18n="journeyTitle">从自然出发，回到循环。</h2></div>
+        <p class="section-note" data-i18n="instructions">点击节点了解细节；Tab 聚焦，Enter 或空格选择。</p>
+      </div>
+      <noscript><p class="notice">请启用 JavaScript 以切换场景、查看节点说明和楼层分区。下方保留完整流程概览。</p></noscript>
+      <div class="control-bar">
+        <div class="scenario-switch" role="group" aria-label="运行场景 / Scenarios">
+          <button type="button" data-scenario="normal" aria-pressed="true"><span aria-hidden="true">◉</span> <span data-i18n="normal">日常运行</span></button>
+          <button type="button" data-scenario="peak" aria-pressed="false"><span aria-hidden="true">↗</span> <span data-i18n="peak">早晚高峰</span></button>
+          <button type="button" data-scenario="rain" aria-pressed="false"><span aria-hidden="true">☂</span> <span data-i18n="rain">强降雨</span></button>
+        </div>
+        <button type="button" id="motion-toggle" aria-pressed="false" data-i18n="pause">暂停水流动画</button>
+      </div>
+      <div class="scenario-summary" role="status" aria-live="polite" aria-atomic="true">
+        <h3 id="scenario-title">日常运行 · 供需平衡</h3>
+        <p id="scenario-copy">净水厂持续供水，分区泵组按需调节；生活污水沿独立管道收集，送往污水处理厂。</p>
+      </div>
+      <p class="simulation-note" data-i18n="simulation">教学模拟 · 以下数值仅比较工况，不是真实监测、工程设计或安全预报；日常用水需求指数 = 100。</p>
+      <div class="metrics">
+        <div class="metric"><span data-i18n="demandLabel">用水需求指数</span><strong id="demand-value">100</strong><span class="meter"><i id="demand-meter" style="--level: 55%"></i></span></div>
+        <div class="metric"><span data-i18n="pumpLabel">二次供水调节</span><strong id="pump-value">按需稳压</strong><span id="pump-note">分区运行，维持服务</span></div>
+        <div class="metric drainage-metric"><span data-i18n="drainLabel">排水系统负荷（示意）</span><strong id="drain-value">35%</strong><span class="meter"><i id="drain-meter" style="--level: 35%"></i></span></div>
+      </div>
+
+      <div class="explorer-grid">
+        <div class="map-panel">
+          <div class="map-heading"><span data-i18n="mapTitle">城市水路 / 顺着箭头探索</span><span class="map-live" data-i18n="schematic">非地理比例示意</span></div>
+          <div class="water-map" id="water-map">
+            <div class="rainfall" aria-hidden="true"></div>
+            <svg class="route-map" viewBox="0 0 800 440" preserveAspectRatio="none" aria-hidden="true">
+              <path class="route-bed" d="M100 110H700V330H100"/>
+              <path class="route raw-route" d="M100 110H300"/>
+              <path class="route supply-route" d="M300 110H700V330"/>
+              <path class="route waste-route" d="M700 330H300"/>
+              <path class="route reuse-route" d="M300 330H100"/>
+              <path class="rain-route route" d="M485 210V330H300"/>
+              <g class="route-arrows"><path d="m202 104 8 6-8 6m200-12 8 6-8 6m200-12 8 6-8 6m92 88 6 8 6-8m-104 126-8 6 8 6m-200-12-8 6 8 6m-200-12-8 6 8 6"/></g>
+            </svg>
+            <button type="button" class="water-node raw-node" data-node="source" aria-pressed="true" aria-controls="node-detail"><span class="node-index">01</span><span class="node-icon" aria-hidden="true">≈</span><strong data-i18n="sourceName">自然水源</strong><span data-i18n="sourceShort">江河 · 水库 · 地下水</span></button>
+            <button type="button" class="water-node" data-node="treatment" aria-pressed="false" aria-controls="node-detail"><span class="node-index">02</span><span class="node-icon" aria-hidden="true">▥</span><strong data-i18n="treatmentName">净水厂</strong><span data-i18n="treatmentShort">把原水处理为自来水</span></button>
+            <button type="button" class="water-node" data-node="network" aria-pressed="false" aria-controls="node-detail"><span class="node-index">03</span><span class="node-icon" aria-hidden="true">⑂</span><strong data-i18n="networkName">输配水管网</strong><span data-i18n="networkShort">主干到支线，连接街区</span></button>
+            <button type="button" class="water-node" data-node="boost" aria-pressed="false" aria-controls="node-detail"><span class="node-index">04</span><span class="node-icon" aria-hidden="true">⇧</span><strong data-i18n="boostName">二次供水</strong><span data-i18n="boostShort">分区加压，送往高处</span></button>
+            <button type="button" class="water-node" data-node="home" aria-pressed="false" aria-controls="node-detail"><span class="node-index">05</span><span class="node-icon" aria-hidden="true">⌂</span><strong data-i18n="homeName">家庭用水</strong><span data-i18n="homeShort">厨房 · 浴室 · 洗衣机</span></button>
+            <button type="button" class="water-node waste-node" data-node="drainage" aria-pressed="false" aria-controls="node-detail"><span class="node-index">06</span><span class="node-icon" aria-hidden="true">⇣</span><strong data-i18n="drainageName">排水收集</strong><span data-i18n="drainageShort">用过的水，另走一条路</span></button>
+            <button type="button" class="water-node waste-node" data-node="wastewater" aria-pressed="false" aria-controls="node-detail"><span class="node-index">07</span><span class="node-icon" aria-hidden="true">◌</span><strong data-i18n="wastewaterName">污水处理厂</strong><span data-i18n="wastewaterShort">分离杂物，削减污染</span></button>
+            <button type="button" class="water-node reuse-node" data-node="reuse" aria-pressed="false" aria-controls="node-detail"><span class="node-index">08</span><span class="node-icon" aria-hidden="true">♧</span><strong data-i18n="reuseName">再生利用 / 自然</strong><span data-i18n="reuseShort">按标准处理，各归其位</span></button>
+          </div>
+          <ul class="legend">
+            <li><i class="raw"></i><span data-i18n="rawLegend">原水</span></li>
+            <li><i class="supply"></i><span data-i18n="supplyLegend">自来水管网</span></li>
+            <li><i class="waste"></i><span data-i18n="wasteLegend">污水管网</span></li>
+            <li><i class="reuse"></i><span data-i18n="reuseLegend">处理后去向</span></li>
+            <li class="rain-legend"><i></i><span data-i18n="rainLegend">雨水入流 / 入渗</span></li>
+          </ul>
+          <p class="network-note" data-i18n="networkNote">这是过程连接图，不是同一根管道。自来水与污水管网相互独立；再生水不直接接回家庭饮用水管。</p>
+        </div>
+        <section class="detail-panel" id="node-detail" aria-labelledby="node-title">
+          <div class="detail-live" aria-live="polite" aria-atomic="true">
+            <p class="eyebrow" id="node-step">环节 01 / 08</p>
+            <h3 id="node-title">自然水源</h3>
+            <p class="detail-question" id="node-question">水龙头里的水，最初在哪里？</p>
+            <p id="node-copy">城市根据当地条件，从江河、水库或地下水等取水。原水可能含有泥沙、微生物和其他物质，不能把自然水源等同于可直接饮用的水。</p>
+            <div class="life-card"><span data-i18n="lifeLabel">与你的日常有关</span><p id="node-life">保护水源地，也是守护家里的第一道用水保障。</p></div>
+            <div class="node-scenario"><span data-i18n="scenarioLabel">当前工况下</span><p id="node-scenario">取水与净水设施协调运行，平衡供需。</p></div>
+          </div>
+          <div class="step-controls">
+            <button type="button" id="previous-node" disabled data-i18n="previous">← 上一环节</button>
+            <button type="button" id="next-node" data-i18n="next">下一环节 →</button>
+          </div>
+          <a class="map-back" href="#water-map" data-i18n="mapBack">↑ 返回水路节点</a>
+        </section>
+      </div>
+    </section>
+
+    <section class="building-section wrap" aria-labelledby="building-title">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="buildingEyebrow">02 / 把城市放大到一栋楼</p><h2 id="building-title" data-i18n="buildingTitle">住得更高，水怎么跟上来？</h2></div><p class="section-note" data-i18n="buildingHint">选择供水分区，查看楼内接力。</p></div>
+      <div class="building-grid">
+        <div class="building-art">
+          <div class="building-label"><span data-i18n="cutaway">高层住宅剖面 / 示意</span><span data-i18n="noScale">非实际楼层设计</span></div>
+          <div class="cutaway">
+            <div class="riser supply-riser" aria-hidden="true">↑</div><div class="riser drain-riser" aria-hidden="true">↓</div>
+            <button type="button" class="floor high" data-zone="high" aria-pressed="true"><span class="floor-number" data-i18n="high">高区</span><span class="room" aria-hidden="true">▤ &nbsp; ♧ &nbsp; ▥</span><span class="tap" aria-hidden="true">←</span></button>
+            <button type="button" class="floor middle" data-zone="middle" aria-pressed="false"><span class="floor-number" data-i18n="middle">中区</span><span class="room" aria-hidden="true">▥ &nbsp; ▤ &nbsp; ♧</span><span class="tap" aria-hidden="true">←</span></button>
+            <button type="button" class="floor low" data-zone="low" aria-pressed="false"><span class="floor-number" data-i18n="low">低区</span><span class="room" aria-hidden="true">♧ &nbsp; ▥ &nbsp; ▤</span><span class="tap" aria-hidden="true">←</span></button>
+            <div class="pump-room"><span class="pump-symbol" aria-hidden="true">⇧</span><span id="building-pump" data-i18n="pumpRoom">分区泵组 · 按需稳压</span></div>
+          </div>
+          <div class="building-legend"><span data-i18n="buildingSupply">蓝色 ↑ 给水立管（分区示意）</span><span data-i18n="buildingDrain">橙色 ↓ 独立排水立管</span></div>
+        </div>
+        <div class="building-copy">
+          <div aria-live="polite" aria-atomic="true"><p class="eyebrow" id="zone-kicker">当前查看 / 高区</p><h3 id="zone-title">不是一台泵，把水猛推到楼顶。</h3><p id="zone-copy">高区通常需要独立的增压分区。通过泵组、控制与必要的储水设施配合，让高处有水，也避免低处压力过大。</p><div class="zone-status"><span data-i18n="responseLabel">当前调节</span><strong id="zone-response">按需变频，维持分区服务。</strong></div></div>
+          <p class="fine-print" data-i18n="buildingCaveat">建筑可能采用直供、变频增压、水箱等不同组合，实际分区取决于高度、当地水压与规范。本图不作为工程设计依据；储水与二次供水设施需要清洁、维护和水质管理。</p>
+        </div>
+      </div>
+    </section>
+    <section class="takeaways wrap" aria-labelledby="takeaways-title">
+      <p class="eyebrow" data-i18n="takeawayEyebrow">03 / 带走三个小发现</p><h2 id="takeaways-title" data-i18n="takeawayTitle">一滴水的旅行，不止于水龙头。</h2>
+      <div class="takeaway-grid">
+        <article><span>01</span><h3 data-i18n="takeaway1Title">净水 ≠ 污水处理</h3><p data-i18n="takeaway1">净水厂面向供水水质；污水厂面向污染物削减和排放、再生利用标准，两者不能互相替代。</p></article>
+        <article><span>02</span><h3 data-i18n="takeaway2Title">雨水也有自己的路</h3><p data-i18n="takeaway2">本图以雨污分流为主，强降雨仍可能经入渗、入流增加污水负荷。雨水通常经雨水管网、调蓄等设施排放；合流制地区路径不同。</p></article>
+        <article><span>03</span><h3 data-i18n="takeaway3Title">安全要看当地指引</h3><p data-i18n="takeaway3">处理、管网和楼内设施共同影响末端水质。能否直接饮用请遵循当地供水与卫生指引；再生水不等于饮用水。</p></article>
+      </div>
+    </section>
+    <footer class="wrap footer"><p data-i18n="closing">你拧开水龙头之前，一整座城市已经接力了很久。</p><a href="./index.html" data-i18n="back">← 返回城市系统目录</a><span data-i18n="footerNote">科普示意 · 非实时运行数据</span></footer>
+  </main>
+</body>
+</html>
