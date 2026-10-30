@@ -54,7 +54,7 @@
     </div>
 
     <section class="city-day-entry wrap" aria-labelledby="city-day-title">
-      <div><p class="eyebrow">ONE CITY / MANY CONNECTIONS</p><h2 id="city-day-title">同一座城的一天</h2><p>早高峰、暴雨、节假日：把九个系统放回同一座城市，看见它们如何相互影响。</p></div>
+      <div><p class="eyebrow">ONE CITY / MANY CONNECTIONS</p><h2 id="city-day-title">A Day in the Same City</h2><p>Morning rush, heavy rain, holiday crowds. Explore how nine urban systems respond — and how a change in one can affect another.</p><ul class="city-day-scenarios" aria-label="Connected-city scenarios"><li>Morning rush</li><li>Heavy rain</li><li>Holiday activity</li></ul></div>
       <a class="button button-primary" href="./city_day.html">Explore a connected day <span aria-hidden="true">↗</span></a>
     </section>
 
@@ -114,7 +114,7 @@
           <a class="demo-art water-art" href="./urban_water_supply.html" aria-label="Enter the urban water supply demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 002</span>
             <svg viewBox="0 0 400 220" role="img" aria-label="Water flowing from a reservoir through treatment tanks to a home"><path class="art-grid" d="m0 155 200-100 200 100M0 185 200 85l200 100M60 220V125m70 95V90m70 130V55m70 165V90m70 130v-95"/><path class="water-pipe" d="m45 132 75 37 81-41 67 34 86-44"/><path class="art-solid" d="m35 95 39-20 39 20v40l-39 20-39-20Z"/><ellipse cx="74" cy="95" rx="39" ry="17"/><path d="M35 113q39 32 78 0m55-4 34-18 35 18v27l-35 17-34-17Z"/><path class="art-solid" d="m287 86 31-37 47 23v49l-47 24-31-15Z"/><path d="m287 86 31 16 47-30m-47 30v43m14-48v17l15-7V90"/><path class="drop" d="M201 42c-21 25-16 37 0 37s21-12 0-37Z"/></svg>
           </a>
-          <div class="demo-content"><div class="tags"><span>Infrastructure</span><span>Water cycle</span><span>Pipe network</span></div><h3>Urban Water Supply</h3><p>Follow a drop from its source to your faucet, through wastewater treatment and back to nature or reuse.</p><div class="interaction"><span aria-hidden="true">⌁</span> Clickable stages, three scenarios &amp; high-rise cutaway · 中 / EN</div><a class="card-action" href="./urban_water_supply.html">Explore the system <span aria-hidden="true">↗</span></a></div>
+          <div class="demo-content"><div class="tags"><span>Infrastructure</span><span>Water cycle</span><span>Pipe network</span></div><h3>Urban Water Supply</h3><p>Follow a drop from its source to your faucet, through wastewater treatment and back to nature or reuse.</p><div class="interaction"><span aria-hidden="true">⌁</span> Clickable stages, three scenarios &amp; high-rise cutaway</div><a class="card-action" href="./urban_water_supply.html">Explore the system <span aria-hidden="true">↗</span></a></div>
         </article>
         <article class="demo-card" data-categories="infrastructure energy">
           <a class="demo-art waste-art" href="./waste_sorting.html" aria-label="Enter the waste sorting journey demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 003</span>
@@ -130,13 +130,42 @@
         </article>
         <article class="demo-card" data-categories="public">
           <a class="demo-art metro-art" href="./metro_operations.html" aria-label="Enter the metro operations demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 005</span>
-            <svg viewBox="0 0 400 220" role="img" aria-label="A metro train on connected rail lines"><path class="art-grid" d="m0 155 200-100 200 100M0 190 200 90l200 100"/><path class="metro-route" d="m40 172 90 45 228-114M24 153l106 54L358 93"/><path class="art-solid" d="m107 117 143-72 46 23v58l-143 72-46-23Z"/><path d="m107 117 46 23 143-72m-143 72v58m-28-70v25l15 7v-25Zm45 14v25l28-14v-25Zm42-21v25l28-14V98Zm42-21v25l28-14V77Z"/><circle cx="127" cy="162" r="4"/><circle cx="143" cy="170" r="4"/></svg>
+            <svg class="metro-preview" viewBox="0 0 400 220" role="img" aria-label="A two-car metro train with passenger doors, windows and a rounded driver cab on parallel tracks">
+              <defs><linearGradient id="metro-body" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b6ccd9"/><stop offset="1" stop-color="#718fa5"/></linearGradient><linearGradient id="metro-cab" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b5d3e2"/><stop offset="1" stop-color="#688ba3"/></linearGradient></defs>
+              <path class="art-grid" d="M25 67H375M25 110H375M25 153H375M80 48V195M160 48V195M240 48V195M320 48V195"/>
+              <path class="metro-platform" d="M24 164H376V172H24Z"/><path class="metro-platform-edge" d="M24 164H376"/>
+              <g class="metro-rails"><path d="M30 183H370M30 195H370"/><path class="metro-sleepers" d="m43 179 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20m20-20 8 20"/></g>
+              <ellipse cx="198" cy="181" rx="151" ry="7" fill="#101c29" stroke="none"/>
+              <g class="metro-undercar"><path d="M62 155H154V168H62ZM172 155H321V168H172Z"/></g>
+              <g class="metro-wheels"><circle cx="80" cy="173" r="8"/><circle cx="139" cy="173" r="8"/><circle cx="196" cy="173" r="8"/><circle cx="269" cy="173" r="8"/><circle cx="302" cy="173" r="8"/></g>
+              <g class="metro-car"><path class="metro-body" d="M54 103Q54 88 69 88H155V158H54Z"/><path class="metro-roof" d="M62 88V83H155V88"/><rect class="metro-window" x="65" y="101" width="21" height="22" rx="3"/><rect class="metro-window" x="94" y="101" width="21" height="22" rx="3"/><rect class="metro-door" x="124" y="99" width="21" height="55" rx="2"/><path class="metro-window" d="M128 104H141V124H128Z"/><path class="metro-door-seam" d="M134.5 100V153"/><path class="metro-stripe" d="M55 135H155"/></g>
+              <path class="metro-joint" d="M156 98H170V155H156Z"/><path class="metro-joint-folds" d="M159 99V154M163 99V154M167 99V154"/>
+              <g class="metro-car"><path class="metro-body" d="M171 88H279V158H171Z"/><path class="metro-roof" d="M171 88V83H279V88"/><rect class="metro-window" x="181" y="101" width="21" height="22" rx="3"/><rect class="metro-window" x="210" y="101" width="21" height="22" rx="3"/><rect class="metro-door" x="240" y="99" width="23" height="55" rx="2"/><path class="metro-window" d="M244 104H259V124H244Z"/><path class="metro-door-seam" d="M251.5 100V153"/><path class="metro-stripe" d="M171 135H279"/></g>
+              <g class="metro-driver-cab"><path class="metro-cab" d="M279 88H292Q315 88 327 111L334 139Q337 155 322 159H279Z"/><path class="metro-window" d="M287 101H299Q309 102 315 115L318 125H287Z"/><path class="metro-front-stripe" d="M280 135H329"/><path class="metro-light" d="M286 146h8m22 0h8"/><path d="M284 157H324" stroke="#304958"/><text x="286" y="97" class="metro-destination">01</text></g>
+              <g class="metro-station-sign"><path d="M342 69V108"/><rect x="329" y="47" width="26" height="25" rx="4"/><text x="342" y="65">M</text><path d="M28 75H314" stroke-dasharray="3 7" opacity=".3"/></g>
+            </svg>
           </a>
           <div class="demo-content"><div class="tags"><span>Transportation</span><span>Dispatching</span><span>Passenger flow</span></div><h3>A Day in Metro Operations</h3><p>Behind every arrival: keeping a metro line moving through the rush and the quiet.</p><div class="interaction"><span aria-hidden="true">⌁</span> Animated line, three scenarios &amp; operating perspectives</div><a class="card-action" href="./metro_operations.html">Explore the system <span aria-hidden="true">↗</span></a></div>
         </article>
         <article class="demo-card" data-categories="everyday">
           <a class="demo-art building-art" href="./building_systems.html" aria-label="Enter the building systems demo"><span class="badge live"><span class="status-dot"></span> LIVE DEMO</span><span class="art-index">SYSTEM / 006</span>
-            <svg viewBox="0 0 400 220" role="img" aria-label="A building cutaway revealing connected floors and service networks"><path class="art-grid" d="m0 155 200-100 200 100M0 190 200 90l200 100"/><path class="art-solid" d="m144 50 54-27 67 34v124l-54 27-67-34Z"/><path d="m144 50 67 34 54-27m-54 27v124m-67-34 67 34 54-27m-121-3 67 34 54-27m-121-3 67 34 54-27m-121-3 67 34 54-27m-121-3 67 34 54-27"/><path class="building-route" d="M157 66v100l40 20V87m31 103V91l24-12v98"/><path d="m167 41 67 34m-79 14 40 20m-40 12 40 20m-40 12 40 20"/></svg>
+            <svg class="building-preview" viewBox="0 0 400 220" role="img" aria-label="A three-floor building cutaway with furnished rooms, an elevator, rooftop ventilation, and separate water and electricity lines">
+              <path class="art-grid" d="M38 81H362M38 121H362M38 161H362M68 58V202M348 58V202"/>
+              <ellipse cx="204" cy="202" rx="153" ry="7" fill="#1e1b28" stroke="none"/>
+              <path class="building-side" d="M292 62 328 46V182L292 198Z"/>
+              <g class="building-side-windows"><path d="m302 72 16-7v19l-16 7Zm0 40 16-7v19l-16 7Zm0 40 16-7v19l-16 7Z"/></g>
+              <path class="building-shell" d="M88 62H292V198H88Z"/>
+              <g class="building-floor"><path d="M132 66H272V98H132Z"/><path class="building-room-window" d="M144 72H165V85H144ZM238 72H259V85H238Z"/><path class="building-furniture" d="M144 90H177V94H144ZM148 94V98M174 94V98M235 90H262V94H235ZM239 94V98M258 94V98"/><path class="building-chair" d="M183 85V94H193V98"/></g>
+              <g class="building-floor"><path d="M132 106H272V138H132Z"/><path class="building-room-window" d="M144 111H171V123H144ZM238 111H259V123H238Z"/><path class="building-furniture" d="M143 129Q143 126 146 126H173Q177 126 177 130V135H143ZM147 135V138M173 135V138M194 131H214M197 131V138M211 131V138"/><path class="building-plant" d="M228 129v-9m0 6q-11-2-8-9 10 0 8 9m0-3q0-9 8-9 3 8-8 9"/><path class="building-planter" d="M223 129H233L231 137H225Z"/></g>
+              <g class="building-floor"><path d="M132 146H272V178H132Z"/><path class="building-entrance" d="M173 151H206V178H173Z"/><path d="M189 151V178M184 164V169M194 164V169"/><path class="building-furniture" d="M225 168H260V173H225ZM230 173V178M255 173V178"/><path class="building-room-window" d="M141 153H159V166H141Z"/></g>
+              <g class="building-slabs"><path d="M88 98H292V104H88ZM88 138H292V144H88ZM88 178H292V184H88Z"/></g>
+              <g class="building-elevator"><rect class="building-shaft" x="96" y="66" width="31" height="112" rx="2"/><path class="building-cable" d="M108 67V110M115 67V110"/><rect class="building-lift-car" x="100" y="110" width="23" height="25" rx="2"/><path class="building-lift-doors" d="M104 115H119V134H104ZM111.5 115V134"/><path class="building-lift-arrow" d="m105 151 6-6 6 6m-6-6v15"/></g>
+              <path class="building-roof" d="m88 62 36-16h204l-36 16Z"/>
+              <g class="building-ventilation"><path class="building-duct" d="M190 52V69H215V80M215 69H264"/><rect class="building-hvac" x="158" y="37" width="42" height="18" rx="3"/><g class="building-fans"><circle cx="170" cy="46" r="5"/><circle cx="188" cy="46" r="5"/><path d="m167 43 6 6m-6 0 6-6m12 0 6 6m-6 0 6-6"/></g><path class="building-vent" d="M210 80H220M212 83H218"/></g>
+              <g class="building-water"><path d="M258 53H286V191H266M286 95H254V89M286 135H254V129M286 175H264"/><rect class="building-water-tank" x="245" y="31" width="27" height="22" rx="5"/><path d="M246 40H271"/><circle class="building-pump" cx="260" cy="191" r="6"/></g>
+              <g class="building-electricity"><path d="M182 191H277V64M277 69H232V74M277 109H202V114M277 149H232V154"/><path class="building-lamp" d="M226 75H238M196 115H208M226 155H238"/><rect class="building-switchboard" x="146" y="186" width="36" height="12" rx="2"/><path class="building-bolt" d="m166 188-5 4h6l-5 4"/></g>
+              <path class="building-ground" d="M45 201H354M80 198H300"/>
+            </svg>
           </a>
           <div class="demo-content"><div class="tags"><span>Buildings</span><span>Coordination</span><span>Cross-section</span></div><h3>How a Building Works</h3><p>Electricity, water, elevators, and more. One building, many systems working as one.</p><div class="interaction"><span aria-hidden="true">⌁</span> Six systems, floor selection &amp; scenario switching</div><a class="card-action" href="./building_systems.html">Explore the system <span aria-hidden="true">↗</span></a></div>
         </article>
@@ -160,6 +189,7 @@
         </article>
       </div>
       <p class="catalog-note">Nine interactive topics, plus one connected-city experience. Category counts overlap. Demo figures are educational simulations, not live operational data.</p>
+      <p class="language-note">Demo languages: Chinese / English for power and water; Chinese for the other topics and the connected-city experience.</p>
     </section>
 
     <section class="approach wrap" id="approach" aria-labelledby="approach-title">

@@ -20,6 +20,9 @@ function filterTopics(category) {
 
 document.querySelector('.filters').hidden = false;
 document.querySelector('[data-filter="all"] span').textContent = String(cards.length);
+for (const card of cards) {
+  card.querySelector('.card-action').setAttribute('aria-label', `Explore ${card.querySelector('h3').textContent}`);
+}
 for (const category of document.querySelectorAll('[data-category]')) {
   const count = cards.filter(card => card.dataset.categories.split(' ').includes(category.dataset.category)).length;
   category.querySelector('.category-count').textContent = `${count} ${count === 1 ? 'topic' : 'topics'}`;

@@ -16,7 +16,7 @@ async function until(check, label) {
   throw new Error(`Timed out: ${label}`);
 }
 
-async function main(extraChecks) {
+async function main(extraChecks, { includeSystems = true } = {}) {
   assert.ok(typeof WebSocket !== 'undefined', 'Node.js 22+ is required');
   assert.ok(fs.existsSync(browserPath), 'Set WATER_BROWSER to a Chromium executable');
   const profile = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'city-systems-check-'));
@@ -69,7 +69,7 @@ async function main(extraChecks) {
     await send('Page.enable');
     await send('Runtime.enable');
     await send('Emulation.setFocusEmulationEnabled', { enabled: true });
-    for (const [kind, file] of [['metro', 'metro_operations.html'], ['building', 'building_systems.html']]) {
+    for (const [kind, file] of includeSystems ? [['metro', 'metro_operations.html'], ['building', 'building_systems.html']] : []) {
       await navigate('index.html');
       await click(`a[href="./${file}"]`);
       await until(() => evaluate(`location.pathname.endsWith('${file}') && document.querySelectorAll('#nodes button').length === 6`), `${kind} entry`);
